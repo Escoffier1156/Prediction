@@ -1,5 +1,5 @@
 """
-Japan Stock Market Prediction Engine - Universal CLI & Zero-Code Auto-Trader
+Japan Stock Market Prediction Engine - CLI Suite & Backtest Verifier
 """
 
 import sys
@@ -8,12 +8,13 @@ import json
 from orchestrator import NonNeumannPredictor
 from market_daemon import MarketSessionDaemon
 from auto_trader import ZeroCodeAutoTrader
+from performance_reporter import PerformanceReporter
 
 
 def main():
     parser = argparse.ArgumentParser(
         prog="predict-japan",
-        description="Japan Stock Market Prediction Engine (Zero-Code Auto-Trading & Prediction CLI)"
+        description="Japan Stock Market Prediction Engine (Zero-Code Auto-Trading & Backtest Suite)"
     )
     subparsers = parser.add_subparsers(dest="command", help="Available subcommands")
 
@@ -21,6 +22,10 @@ def main():
     predict_parser = subparsers.add_parser("predict", help="Execute 4,000-ticker dynamic bulk prediction scan")
     predict_parser.add_argument("--time", type=str, default="09:30", choices=["08:30", "09:30", "10:30"], help="Timed trigger slot")
     predict_parser.add_argument("--ticker", type=str, default="ALL", help="Target specific ticker or 'ALL' for full market scan")
+
+    # Command: backtest (Rigorous Walk-Forward Backtest & 10 Proof Metrics)
+    backtest_parser = subparsers.add_parser("backtest", help="Run 100% reproducible Walk-Forward backtest with 10 proof metrics")
+    backtest_parser.add_argument("--strategy", type=str, default="earnings_daytrade", help="Target strategy name")
 
     # Command: autotrade (Zero-Code Automated Trading)
     autotrade_parser = subparsers.add_parser("autotrade", help="Start Zero-Code Automated Trading Engine using config.json (No code needed!)")
@@ -35,7 +40,13 @@ def main():
 
     args = parser.parse_args()
 
-    if args.command == "autotrade":
+    if args.command == "backtest":
+        print("[Japan Stock Engine] Executing Walk-Forward Strategy Backtest & Proof Verification...")
+        reporter = PerformanceReporter()
+        res = reporter.generate_full_performance_proof()
+        print(f"\n[Proof Output] Summary report generated: {res['summary_md']}")
+
+    elif args.command == "autotrade":
         config_file = getattr(args, "config", "config.json")
         trader = ZeroCodeAutoTrader(config_path=config_file)
         trader.start_zero_code_autotrade(trigger_time="09:30")
