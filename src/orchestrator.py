@@ -87,7 +87,13 @@ class NonNeumannPredictor:
 
         # Phase 4: Z3 SMT Solver Jump Extraction
         print("[Phase 4] Z3 SMT Solver Logical Jump Prediction...")
-        current_stock_price = snapshot['prices'][0]['close']
+        prices_data = snapshot.get('jquants_v2_prices', snapshot.get('prices', []))
+        if prices_data and len(prices_data) > 0:
+            last_bar = prices_data[-1]
+            current_stock_price = float(last_bar.get('C', last_bar.get('close', 2963.5)))
+        else:
+            current_stock_price = 2500.0
+
         z3_result = self.solver.solve_boundary_jump(current_stock_price, pymc_params)
 
         elapsed_sec = time.time() - start_time

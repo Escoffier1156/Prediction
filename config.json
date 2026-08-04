@@ -4,6 +4,7 @@
   "min_risk_reward_ratio": 1.5,
   "max_capital_per_trade_jpy": 500000,
   "memory_limit_mb": 500.0,
+  "jquants_api_key": "kD8j_x3J20cbph0K7xjoMeKpWoVXVJJeCiU_Yzjzyfo",
   "broker_config": {
     "broker_type": "GENERIC_WEBHOOK",
     "api_key": "YOUR_BROKER_API_KEY",
@@ -12,8 +13,6 @@
   },
   "webhook_notifications": {
     "enabled": true,
-    "discord_webhook_url": "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID",
-    "telegram_bot_token": "",
-    "telegram_chat_id": ""
+    "discord_webhook_url": "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID"
   }
 }
