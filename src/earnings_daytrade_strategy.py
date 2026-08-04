@@ -51,11 +51,11 @@ class EarningsDaytradeStrategy:
         earnings_universe.sort(key=lambda x: x["night_score"], reverse=True)
         return earnings_universe[:100]
 
-    def finalize_morning_top10(self, night_top100: List[Dict[str, Any]], orderbook_data: Dict[str, Any]) -> List[Dict[str, Any]]:
+    def finalize_morning_top10(self, night_top100: List[Dict[str, Any]], orderbook_data: Dict[str, Any], top_n: int = 100) -> List[Dict[str, Any]]:
         """
         [08:45 Pre-Market Morning]
         Integrates PicoSpeed orderbook depth & J-Quants pre-market quotes into Z3 SMT solver
-        to finalize TOP 10 with highest Risk-Reward ratios (RR比).
+        to finalize TOP candidates with highest Risk-Reward ratios (RR比).
         """
         for item in night_top100:
             code = item.get("code", item.get("ticker", "7203"))
@@ -63,7 +63,7 @@ class EarningsDaytradeStrategy:
             item["morning_score"] = item.get("night_score", 0.05) * depth_ratio
 
         night_top100.sort(key=lambda x: item["morning_score"], reverse=True)
-        return night_top100[:10]
+        return night_top100[:top_n]
 
     def execute_daytrade_rules(
         self,

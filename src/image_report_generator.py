@@ -1,49 +1,52 @@
 """
-Executive Image (PNG) Prediction Report Generator
-Automatically generates high-resolution executive PNG report images (for LINE/Discord image attachment)
-directly from prediction JSON data via ReportLab and pdftoppm.
+Executive High-Res PNG Image Report Generator for TOP 100 Earnings Predictions
+Renders Page 1 (Rank 1-50) and Page 2 (Rank 51-100) into crisp PNG images for LINE attachment.
 """
 
 import sys
 import os
-import json
-import time
 import subprocess
-
-from pdf_report_generator import generate_executive_prediction_pdf
+import shutil
+from pdf_report_generator import generate_top100_pdf_report
 
 
 def generate_executive_prediction_image(
-    json_path: str = "reports/tomorrow_dual_signals_20260805.json",
     png_out_path: str = "reports/tomorrow_prediction_report_20260805.png"
 ):
     print("======================================================================")
-    print(" 🖼️ GENERATING EXECUTIVE HIGH-RES PNG REPORT FOR LINE ATTACHMENT")
+    print(" 🖼️ GENERATING FULL TOP 100 HIGH-RES PNG REPORT FOR LINE ATTACHMENT")
     print("======================================================================")
 
-    pdf_temp = "reports/tomorrow_prediction_report_temp.pdf"
-    generate_executive_prediction_pdf(json_path=json_path, pdf_out_path=pdf_temp)
+    pdf_temp = "reports/tomorrow_top100_prediction_report_temp.pdf"
+    generate_top100_pdf_report(pdf_out_path=pdf_temp)
 
     if not os.path.exists(pdf_temp):
         print("Error: Temporary PDF could not be generated.")
         return
 
-    # Convert PDF to high-res PNG via pdftoppm (200 DPI for crisp mobile display)
-    prefix = "reports/temp_png_render"
+    prefix = "reports/temp_top100_png_render"
     cmd = f"pdftoppm -png -r 200 {pdf_temp} {prefix}"
     res = subprocess.run(cmd, shell=True, capture_output=True, text=True)
 
-    rendered_png = f"{prefix}-1.png"
-    if os.path.exists(rendered_png):
-        if os.path.exists(png_out_path):
-            os.remove(png_out_path)
-        os.rename(rendered_png, png_out_path)
-        print(f"✔ High-resolution PNG Report created: {png_out_path}")
-    else:
-        print("Warning: PNG conversion fallback required.")
+    page1_png = f"{prefix}-1.png"
+    page2_png = f"{prefix}-2.png"
 
-    if os.path.exists(pdf_temp):
-        os.remove(pdf_temp)
+    target_page1 = "reports/tomorrow_prediction_report_20260805_page1.png"
+    target_page2 = "reports/tomorrow_prediction_report_20260805_page2.png"
+
+    if os.path.exists(page1_png):
+        shutil.copy(page1_png, target_page1)
+        shutil.copy(page1_png, png_out_path)
+        print(f"✔ FULL TOP 100 High-resolution PNG (Rank 1-50): {target_page1}")
+
+    if os.path.exists(page2_png):
+        shutil.copy(page2_png, target_page2)
+        print(f"✔ FULL TOP 100 High-resolution PNG (Rank 51-100): {target_page2}")
+
+    # Clean temporary pdftoppm outputs
+    for p in [page1_png, page2_png, pdf_temp]:
+        if os.path.exists(p):
+            os.remove(p)
 
 
 if __name__ == "__main__":
