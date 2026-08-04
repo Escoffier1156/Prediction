@@ -18,7 +18,7 @@ A high-performance **Japan Stock Market Prediction Engine** designed for Japanes
    ▼ (Converted into First-Order Real Arithmetic Logic Formula)
 [Logic Jump] Z3 SMT Solver (Solves TP/SL bounds & probability in 1.15ms without Monte Carlo loops)
    │
-   ▼ Emits Micro-JSON / Real-time Event Stream live to Trading Bots
+   ▼ Emits Micro-JSON / Real-time Event Stream live to Trading Bots / Zero-Code Auto-Trader
 ```
 
 ---
@@ -42,6 +42,31 @@ Run the one-click installer script in your terminal to compile SaC/Chapel native
 
 ---
 
+## 🤖 Zero-Code Automated Trading Mode (No Programming Required!)
+
+Users do **NOT** need to write a single line of code. Simply edit `config.json` and run the zero-code auto-trader command:
+
+```bash
+# 1-Command Zero-Code Auto-Trader
+./bin/predict-japan autotrade
+```
+
+### `config.json` Settings:
+```json
+{
+  "trading_mode": "SIMULATION",
+  "min_confidence_pct": 85.0,
+  "min_risk_reward_ratio": 1.5,
+  "max_capital_per_trade_jpy": 500000,
+  "webhook_notifications": {
+    "enabled": true,
+    "discord_webhook_url": "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"
+  }
+}
+```
+
+---
+
 ## 🚀 Usage & Command Reference
 
 After installation, the `./bin/predict-japan` CLI binary is available:
@@ -53,9 +78,6 @@ Evaluates all 4,000 Japanese tickers across 15,000,000 states in a single bulk s
 ```bash
 # Scan full 4,000-ticker market universe at 09:30 market open
 ./bin/predict-japan predict --ticker ALL --time 09:30
-
-# Predict specific ticker (e.g., SoftBank Group 9984.JP)
-./bin/predict-japan predict --ticker 9984.JP --time 09:30
 ```
 
 ### 2. Perpetual Market Session Streaming Daemon (08:30 -> 15:30)
@@ -145,6 +167,7 @@ Prediction/
 ├── README.md                  # System Documentation
 ├── install.sh                 # 1-Click Automated Installer Script
 ├── build_mac_release.sh       # macOS Universal Package Builder
+├── config.json                # Zero-Code Auto-Trader Configuration
 ├── setup.py                   # Python Package Setup Definition
 ├── shell.nix                  # Nix Development Environment Config
 ├── bin/                       # Executable Binaries
@@ -152,6 +175,7 @@ Prediction/
 │   ├── chapel_chopper         # Chapel Parallel Stream Binary
 │   └── predict-japan          # Global System CLI Utility
 └── src/
+    ├── auto_trader.py          # Zero-Code Automated Execution Engine
     ├── duckdb_arrow_stream.py  # DuckDB & Arrow Zero-Copy Streaming Engine
     ├── chapel_chopper.chpl     # Chapel Parallel Stream Chopper
     ├── sac_pipeline.sac        # SaC In-place Memory Evaporator

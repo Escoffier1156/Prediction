@@ -1,5 +1,5 @@
 """
-Non-Neumann System Full-Market CLI & Market Session Daemon Mode
+Japan Stock Market Prediction Engine - Universal CLI & Zero-Code Auto-Trader
 """
 
 import sys
@@ -7,12 +7,13 @@ import argparse
 import json
 from orchestrator import NonNeumannPredictor
 from market_daemon import MarketSessionDaemon
+from auto_trader import ZeroCodeAutoTrader
 
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="non-neumann",
-        description="Non-Neumann Dynamic Bulk Prediction Engine CLI"
+        prog="predict-japan",
+        description="Japan Stock Market Prediction Engine (Zero-Code Auto-Trading & Prediction CLI)"
     )
     subparsers = parser.add_subparsers(dest="command", help="Available subcommands")
 
@@ -20,6 +21,10 @@ def main():
     predict_parser = subparsers.add_parser("predict", help="Execute 4,000-ticker dynamic bulk prediction scan")
     predict_parser.add_argument("--time", type=str, default="09:30", choices=["08:30", "09:30", "10:30"], help="Timed trigger slot")
     predict_parser.add_argument("--ticker", type=str, default="ALL", help="Target specific ticker or 'ALL' for full market scan")
+
+    # Command: autotrade (Zero-Code Automated Trading)
+    autotrade_parser = subparsers.add_parser("autotrade", help="Start Zero-Code Automated Trading Engine using config.json (No code needed!)")
+    autotrade_parser.add_argument("--config", type=str, default="config.json", help="Path to config.json file")
 
     # Command: daemon (Perpetual Market Stream)
     daemon_parser = subparsers.add_parser("daemon", help="Start continuous non-stop market session daemon (08:30 -> 15:30)")
@@ -30,12 +35,17 @@ def main():
 
     args = parser.parse_args()
 
-    if args.command == "daemon":
+    if args.command == "autotrade":
+        config_file = getattr(args, "config", "config.json")
+        trader = ZeroCodeAutoTrader(config_path=config_file)
+        trader.start_zero_code_autotrade(trigger_time="09:30")
+
+    elif args.command == "daemon":
         daemon = MarketSessionDaemon(memory_limit_mb=500.0)
         daemon.start_perpetual_market_stream(simulated_fast_mode=True)
 
     elif args.command == "serve":
-        print(f"[Non-Neumann Engine] Starting Full-Market Microservice API on port {args.port}...")
+        print(f"[Japan Stock Engine] Starting Full-Market Microservice API on port {args.port}...")
         from http.server import HTTPServer, BaseHTTPRequestHandler
         import urllib.parse
 

@@ -1,0 +1,19 @@
+{
+  "trading_mode": "SIMULATION",
+  "min_confidence_pct": 85.0,
+  "min_risk_reward_ratio": 1.5,
+  "max_capital_per_trade_jpy": 500000,
+  "memory_limit_mb": 500.0,
+  "broker_config": {
+    "broker_type": "GENERIC_WEBHOOK",
+    "api_key": "YOUR_BROKER_API_KEY",
+    "api_secret": "YOUR_BROKER_API_SECRET",
+    "account_id": "YOUR_ACCOUNT_ID"
+  },
+  "webhook_notifications": {
+    "enabled": true,
+    "discord_webhook_url": "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID",
+    "telegram_bot_token": "",
+    "telegram_chat_id": ""
+  }
+}
