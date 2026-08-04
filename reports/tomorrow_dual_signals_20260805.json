@@ -1,6 +1,6 @@
 {
   "prediction_date": "2026-08-05",
-  "generated_at": "2026-08-04 16:23:12",
+  "generated_at": "2026-08-04 16:25:48",
   "trigger_slot": "08:30 PRE-MARKET DUAL-STREAM",
   "data_source": "J-Quants V2 Official Live Feed (x-api-key Authenticated)",
   "empirical_proof_metrics": {
