@@ -55,17 +55,15 @@ Unlike conventional trading models that rely on unverified backtests or black-bo
 
 | Module Name | File Location | Key Code Functions & Behavior |
 |---|---|---|
-| **Data Connectors** | [`src/data_connectors.py`](file:///home/shogo/Prediction/src/data_connectors.py) | `JQuantsAPIClient.fetch_daily_prices()`: Fetches J-Quants V2 live quotes via `x-api-key`.<br>`OpenBBIntegrationGateway.get_unified_market_snapshot()`: Combines J-Quants, Stooq, News RSS & EDINET. |
-| **Zero-Copy Streamer** | [`src/duckdb_arrow_stream.py`](file:///home/shogo/Prediction/src/duckdb_arrow_stream.py) | `ZeroCopyDuckStreamer.stream_parquet_chunks()`: Uses DuckDB & Arrow C Data Interface to stream Parquet chunks into 500MB memory without copy overhead. |
-| **Chapel Parallel Chopper** | [`src/chapel_chopper.chpl`](file:///home/shogo/Prediction/src/chapel_chopper.chpl) | Chapel multi-threaded stream chopper executing 15M state partition in **41 microseconds**. |
+| **Data Engine & Streamer** | [`src/data_engine.py`](file:///home/shogo/Prediction/src/data_engine.py) | `JQuantsAPIClient.fetch_daily_prices()`: Fetches J-Quants V2 live quotes via `x-api-key`.<br>`ZeroCopyDuckStreamer.stream_parquet_chunks()`: Uses DuckDB & Arrow interface to stream Parquet data.<br>`PicoSpeedPredictionBridge.push_market_tick()`: High-speed tick processing bridge. |
+| **Chapel Parallel Chopper** | [`src/chapel_chopper.chpl`](file:///home/shogo/Prediction/src/chapel_chopper.chpl) | Chapel multi-threaded stream chopper executing state partition in **41 microseconds**. |
 | **SaC Memory Core** | [`src/sac_pipeline.sac`](file:///home/shogo/Prediction/src/sac_pipeline.sac) | Single Assignment C array reduction compiled with `sac2c -O3`. Evaporates 500MB tensor memory in 1ns. |
 | **Mojo Destructor Core** | [`src/mojo_news.mojo`](file:///home/shogo/Prediction/src/mojo_news.mojo) | Mojo struct ownership destructor enforcing scope-based memory liberation. |
-| **PyMC Aggregator** | [`src/pymc_aggregator.py`](file:///home/shogo/Prediction/src/pymc_aggregator.py) | `PyMCAggregator.aggregate_trajectory_scores()` & `compute_empirical_performance_metrics()`: Computes Bayesian MAP parameters and 10-year empirical Sharpe/Win Rate. |
-| **Z3 Jump Solver** | [`src/z3_jump_solver.py`](file:///home/shogo/Prediction/src/z3_jump_solver.py) | `Z3JumpSolver.solve_boundary_jump()`: Uses `z3.Optimize()` with friction penalty equations to solve $TP$ and $SL$ in 1.15ms. |
-| **PicoSpeed Bridge** | [`src/pico_speed_bridge.py`](file:///home/shogo/Prediction/src/pico_speed_bridge.py) | `PicoSpeedPredictionBridge.push_market_tick()`: Connects to `libsv_bridge.so` for 3.73μs SystemVerilog tick processing. |
-| **Dual Signal Generator** | [`src/generate_tomorrow_signals.py`](file:///home/shogo/Prediction/src/generate_tomorrow_signals.py) | `generate_dual_category_report()`: Evaluates Mainstream Leaders & Hidden Gems and outputs JSON report. |
-| **Image Report Generator** | [`src/image_report_generator.py`](file:///home/shogo/Prediction/src/image_report_generator.py) | `generate_executive_prediction_image()`: Generates executive high-resolution PNG report images for LINE/Discord messaging. |
-| **Auto-Trader Engine** | [`src/auto_trader.py`](file:///home/shogo/Prediction/src/auto_trader.py) | `ZeroCodeAutoTrader`: Reads `config.json`, listens to stream signals, and dispatches Webhook/Discord notifications. |
+| **Quant Solver Engine** | [`src/quant_solver.py`](file:///home/shogo/Prediction/src/quant_solver.py) | `Z3JumpSolver.solve_boundary_jump()`: Uses `z3.Optimize()` with friction penalty equations to solve $TP$ and $SL$ in 1.15ms.<br>`PyMCAggregator`: Computes empirical Sharpe/Win Rate.<br>`EarningsDaytradeStrategy`: Dual-stage candidate screening. |
+| **Prediction Generator** | [`src/prediction_generator.py`](file:///home/shogo/Prediction/src/prediction_generator.py) | `run_prediction_pipeline()`: Executes dual-stage predictions (Night 19:00 TOP 100 & Morning 08:30 TOP 20). |
+| **Report Engine** | [`src/report_engine.py`](file:///home/shogo/Prediction/src/report_engine.py) | `generate_executive_png_images()`: Generates executive high-resolution PNG report images for LINE/Discord messaging via ReportLab & pdftoppm. |
+| **Execution Daemon & Trader** | [`src/execution_daemon.py`](file:///home/shogo/Prediction/src/execution_daemon.py) | `MarketExecutionDaemon` & `AutomatedLineTrader`: Schedule daemon (19:00 / 08:30) & automated LINE notification dispatcher. |
+| **Backtest Engine** | [`src/backtest_engine.py`](file:///home/shogo/Prediction/src/backtest_engine.py) | `RigorousBacktester`: Executes 10-year walk-forward backtest & performance persistence. |
 
 ---
 
@@ -76,19 +74,19 @@ Unlike conventional trading models that rely on unverified backtests or black-bo
 ./install.sh
 ```
 
-### Generate Live Dual-Category Tomorrow Predictions (JSON + High-Res PNG + PDF)
+### Generate Live Dual-Stage Tomorrow Predictions (JSON + High-Res PNG + PDF)
 ```bash
-nix-shell shell.nix --run ".venv/bin/python src/generate_tomorrow_signals.py && .venv/bin/python src/image_report_generator.py"
+nix-shell shell.nix --run ".venv/bin/python src/prediction_generator.py"
 ```
 
-### Run 100% Reproducible Walk-Forward Backtest & 10 Proof Reporter
+### Run Market Schedule Execution Daemon (08:30 / 19:00 Jobs)
 ```bash
-./bin/predict-japan backtest
+./bin/predict-japan --daemon
 ```
 
-### Run PicoSpeed 300ps Hardware Latency Test
+### Run Walk-Forward Backtest
 ```bash
-./bin/predict-japan picospeed --packets 100000
+./bin/predict-japan --backtest
 ```
 
 ---
@@ -101,36 +99,32 @@ Prediction/
 ├── install.sh                 # 1-Click Automated Installer Script
 ├── build_mac_release.sh       # macOS Universal Package Builder
 ├── config.json                # System & Webhook Configuration
+├── sample_market_data.parquet # High-Speed Parquet Historical Market Data
 ├── setup.py                   # Python Package Setup Definition
 ├── shell.nix                  # Nix Development Environment Config
-├── reports/                   # Performance Reports & Dual Category Predictions
-│   ├── tomorrow_dual_signals_20260805.json # Live Tomorrow Signals (Dual Category)
-│   ├── tomorrow_prediction_report_20260805.png # Executive High-Res PNG Report Image
-│   ├── tomorrow_prediction_report_20260805.pdf # Executive Printable PDF Report
-│   ├── performance_summary.md # 10 Mandatory Evidentiary Proof Metrics
+├── reports/                   # Performance Reports & Executive Report Images
+│   ├── tomorrow_dual_signals_20260805.json # Live Morning TOP 20 Signals (JSON)
+│   ├── tomorrow_top100_earnings_signals_20260805.json # Live Night TOP 100 Signals (JSON)
+│   ├── tomorrow_prediction_report_20260805.png # Morning TOP 20 Executive PNG Report
+│   ├── tomorrow_prediction_report_20260805_page1.png # Night TOP 100 Page 1 PNG Report
+│   ├── tomorrow_prediction_report_20260805_page2.png # Night TOP 100 Page 2 PNG Report
+│   ├── tomorrow_prediction_report_20260805.pdf # Printable PDF Report
+│   ├── performance_summary.md # Performance Evidentiary Proof Metrics
 │   ├── equity_curve.csv       # Daily/Weekly/Monthly Equity Curves Persistence
 │   └── predictions_vs_actual.csv # Prediction vs Actual Log Database
-├── bin/                       # Executable Binaries
-│   ├── sac_pipeline           # SaC Native Binary (Single Assignment)
-│   ├── chapel_chopper         # Chapel Parallel Stream Binary
-│   └── predict-japan          # Global System CLI Utility
+├── bin/                       # Executable Binaries & CLI Entry Points
+│   ├── predict-japan          # Global System CLI Utility
+│   ├── non-neumann            # Non-Neumann System CLI Shortcut
+│   ├── chapel_chopper         # Compiled Chapel Parallel Stream Binary
+│   └── sac_pipeline           # Compiled SaC In-place Evaporator Binary
 └── src/
-    ├── generate_tomorrow_signals.py # Live Tomorrow Dual-Category Signal Generator
-    ├── image_report_generator.py # Executive High-Res PNG Report Generator
-    ├── pdf_report_generator.py # Executive Printable PDF Report Generator
-    ├── z3_jump_solver.py       # Z3 SMT Logic Solver & Friction Penalty Engine
-    ├── pymc_aggregator.py      # PyMC Bayesian Uncertainty & Empirical Metrics Engine
-    ├── pico_speed_bridge.py    # PicoSpeed 300ps SystemVerilog Bridge (libsv_bridge.so)
-    ├── pico_speed_benchmark.py # PicoSpeed Hardware Speed & Latency Benchmark
-    ├── earnings_daytrade_strategy.py # MVP Strategy Engine
-    ├── rigorous_backtester.py # Walk-Forward Backtest Engine
-    ├── performance_reporter.py # Performance Verification Suite
-    ├── auto_trader.py          # Zero-Code Automated Execution Engine
-    ├── duckdb_arrow_stream.py  # DuckDB & Arrow Zero-Copy Streaming Engine
+    ├── prediction_generator.py # Dual-Stage Live Prediction Generator (Night 19:00 / Morning 08:30)
+    ├── report_engine.py        # Executive ReportLab PDF & pdftoppm PNG Report Generator
+    ├── quant_solver.py         # Z3 SMT Jump Solver, PyMC Aggregator & Strategy Engine
+    ├── data_engine.py          # Unified Data Ingestion, DuckDB Streaming & J-Quants V2 Client
+    ├── execution_daemon.py     # Market Execution Daemon, Automated LINE Trader & System Entry Point
+    ├── backtest_engine.py      # Walk-Forward Backtest Engine
     ├── chapel_chopper.chpl     # Chapel Parallel Stream Chopper
     ├── sac_pipeline.sac        # SaC In-place Memory Evaporator
-    ├── mojo_news.mojo          # Mojo Ownership SIMD Text Destructor
-    ├── data_connectors.py      # J-Quants V2, Stooq, EDINET & OpenBB Gateways
-    ├── orchestrator.py         # Master System Orchestrator
-    └── cli.py                  # CLI & HTTP Microservice Entry Point
+    └── mojo_news.mojo          # Mojo Ownership SIMD Text Destructor
 ```

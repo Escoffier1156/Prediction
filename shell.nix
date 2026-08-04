@@ -25,6 +25,7 @@ pkgs.mkShell {
 
   shellHook = ''
     export PATH="$HOME/.pixi/bin:/usr/local/bin:$PATH"
+    export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:$LD_LIBRARY_PATH"
 
     export CHPL_LLVM=none
     if [ -f "$HOME/chapel/util/setchplenv.bash" ]; then
