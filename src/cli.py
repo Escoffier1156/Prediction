@@ -1,5 +1,5 @@
 """
-Japan Stock Market Prediction Engine - CLI Suite & Backtest Verifier
+Japan Stock Market Prediction Engine - CLI Suite & PicoSpeed Verification
 """
 
 import sys
@@ -9,12 +9,13 @@ from orchestrator import NonNeumannPredictor
 from market_daemon import MarketSessionDaemon
 from auto_trader import ZeroCodeAutoTrader
 from performance_reporter import PerformanceReporter
+from pico_speed_benchmark import PicoSpeedBenchmarkRunner
 
 
 def main():
     parser = argparse.ArgumentParser(
         prog="predict-japan",
-        description="Japan Stock Market Prediction Engine (Zero-Code Auto-Trading & Backtest Suite)"
+        description="Japan Stock Market Prediction Engine (PicoSpeed 300ps Engine & Strategy CLI)"
     )
     subparsers = parser.add_subparsers(dest="command", help="Available subcommands")
 
@@ -22,6 +23,10 @@ def main():
     predict_parser = subparsers.add_parser("predict", help="Execute 4,000-ticker dynamic bulk prediction scan")
     predict_parser.add_argument("--time", type=str, default="09:30", choices=["08:30", "09:30", "10:30"], help="Timed trigger slot")
     predict_parser.add_argument("--ticker", type=str, default="ALL", help="Target specific ticker or 'ALL' for full market scan")
+
+    # Command: picospeed (PicoSpeed 300ps Ultra-Low Latency Benchmark)
+    picospeed_parser = subparsers.add_parser("picospeed", help="Run PicoSpeed 300ps Ultra-Low Latency hardware benchmark & verification")
+    picospeed_parser.add_argument("--packets", type=int, default=100000, help="Number of market tick packets to stream")
 
     # Command: backtest (Rigorous Walk-Forward Backtest & 10 Proof Metrics)
     backtest_parser = subparsers.add_parser("backtest", help="Run 100% reproducible Walk-Forward backtest with 10 proof metrics")
@@ -40,7 +45,12 @@ def main():
 
     args = parser.parse_args()
 
-    if args.command == "backtest":
+    if args.command == "picospeed":
+        packets = getattr(args, "packets", 100000)
+        runner = PicoSpeedBenchmarkRunner(num_packets=packets)
+        res = runner.run_speed_benchmark()
+
+    elif args.command == "backtest":
         print("[Japan Stock Engine] Executing Walk-Forward Strategy Backtest & Proof Verification...")
         reporter = PerformanceReporter()
         res = reporter.generate_full_performance_proof()
