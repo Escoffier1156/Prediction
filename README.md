@@ -14,30 +14,30 @@ The engine ingests data from 5 primary upstream financial and market data source
 | **J-Quants API V2** | JPX Official Daily Quotes & Financials | Official Japan Exchange Group API (`https://api.jquants.com/v2/equities/bars/daily`). Authenticated via `x-api-key`. Fetches 4,000 TSE tickers (Open, High, Low, Close, Volume, Turnover, Adjusted Prices). | [`src/data_connectors.py#L18-L58`](file:///home/shogo/Prediction/src/data_connectors.py#L18-L58) |
 | **Stooq Engine** | Bulk Historical CSV (10-20 Years) | Downloads 10-20 year historical market time series for Japanese equities (e.g. `7203.jp`, `9984.jp`) without rate limit bottlenecks. | [`src/data_connectors.py#L61-L67`](file:///home/shogo/Prediction/src/data_connectors.py#L61-L67) |
 | **Google News RSS** | Timed Material News (08:30 / 09:30 / 10:30) | Queries major financial news disclosures published within the past hour to capture surprise revenue revisions and macro catalysts. | [`src/data_connectors.py#L70-L95`](file:///home/shogo/Prediction/src/data_connectors.py#L70-L95) |
-| **EDINET API V2** | FSA Official Financial Disclosures | Financial Services Agency (金融庁) API for corporate financial statements (XBRL) and large shareholding reports. | [`src/data_connectors.py#L98-L109`](file:///home/shogo/Prediction/src/data_connectors.py#L98-L109) |
+| **EDINET API V2** | FSA Official Financial Disclosures | Financial Services Agency API for corporate financial statements (XBRL) and large shareholding reports. | [`src/data_connectors.py#L98-L109`](file:///home/shogo/Prediction/src/data_connectors.py#L98-L109) |
 | **PicoSpeed HFT Engine** | 300ps Tick Stream (SystemVerilog / C++) | Zero-copy SystemVerilog memory bridge (`libsv_bridge.so`) processing market orderbook ticks at **3.73 microseconds per tick**. | [`src/pico_speed_bridge.py#L10-L50`](file:///home/shogo/Prediction/src/pico_speed_bridge.py#L10-L50) |
 
 ---
 
-## 🔬 2. Why the Prediction Reports are Exceptionally Reliable
+## 🔬 2. Scientific Reliability & Architectural Guarantees
 
 Unlike conventional trading models that rely on unverified backtests or black-box neural networks, this platform achieves **ultra-high scientific reliability** through 5 core architectural mechanisms:
 
-### ① Zero Look-Ahead Bias (未来情報混入の完全排除)
+### ① Zero Look-Ahead Bias (Strict Time-Boundary Partitioning)
 - **Mechanism**: The Chapel parallel stream chopper ([`src/chapel_chopper.chpl#L1-L40`](file:///home/shogo/Prediction/src/chapel_chopper.chpl#L1-L40)) enforces strict time-boundary partitioning.
 - **Guarantee**: For any 08:30 / 09:30 prediction slot, all inputs are timestamp-filtered to ensure zero future data is streamed into downstream inference components.
 
-### ② Mathematical Friction Penalty Equations (手数料・スリッページペナルティの減算)
+### ② Mathematical Friction Penalty Equations (Fee & Slippage Deduction)
 - **Mechanism**: The Z3 SMT Solver ([`src/z3_jump_solver.py#L15-L65`](file:///home/shogo/Prediction/src/z3_jump_solver.py#L15-L65)) injects broker commissions (0.10% round-trip) and liquidity slippage penalties directly into `z3.Optimize()` real arithmetic equations:
   $$\text{Net } TP = \text{Gross } TP \times (1.0 - \text{Commission} - \text{Slippage Penalty})$$
-  - **王道部門 (Mainstream Large-Cap)**: 0.15% total friction penalty (0.10% fee + 0.05% slippage).
-  - **隠れ銘柄部門 (Hidden Gem Mid-Cap)**: 0.25% total friction penalty (0.10% fee + 0.15% mid-cap liquidity penalty).
+  - **Mainstream Blue-Chips**: 0.15% total friction penalty (0.10% fee + 0.05% slippage).
+  - **Hidden Gem Mid-Caps**: 0.25% total friction penalty (0.10% fee + 0.15% liquidity slippage penalty).
 
-### ③ 1ns Physical Memory Evaporation & 500MB Ceiling (メモリ爆発・フリーズの追放)
+### ③ 1ns Physical Memory Evaporation & 500MB Ceiling
 - **Mechanism**: Single-Assignment C (SaC, [`src/sac_pipeline.sac#L1-L45`](file:///home/shogo/Prediction/src/sac_pipeline.sac#L1-L45)) reference counting and Mojo ownership SIMD destructors ([`src/mojo_news.mojo#L1-L35`](file:///home/shogo/Prediction/src/mojo_news.mojo#L1-L35)) physically free tensor memory in **1 nanosecond** after feature extraction.
 - **Guarantee**: Memory consumption remains locked at **~283 MB**, completely eliminating Python Garbage Collection (GC) pauses and execution freezes.
 
-### ④ SMT Logic Jump Solver vs Monte Carlo Loops (1.15ms 境界抽出)
+### ④ SMT Logic Jump Solver vs Monte Carlo Loops (1.15ms Boundary Extraction)
 - **Mechanism**: Replaces 4,000,000-iteration random Monte Carlo simulation loops with a Microsoft Research Z3 SMT logic optimizer ([`src/z3_jump_solver.py#L30-L60`](file:///home/shogo/Prediction/src/z3_jump_solver.py#L30-L60)).
 - **Result**: Resolves exact $TP, SL,$ and reachability probability $P$ in **1.15 milliseconds** per ticker without simulation error.
 
@@ -63,7 +63,8 @@ Unlike conventional trading models that rely on unverified backtests or black-bo
 | **PyMC Aggregator** | [`src/pymc_aggregator.py`](file:///home/shogo/Prediction/src/pymc_aggregator.py) | `PyMCAggregator.aggregate_trajectory_scores()` & `compute_empirical_performance_metrics()`: Computes Bayesian MAP parameters and 10-year empirical Sharpe/Win Rate. |
 | **Z3 Jump Solver** | [`src/z3_jump_solver.py`](file:///home/shogo/Prediction/src/z3_jump_solver.py) | `Z3JumpSolver.solve_boundary_jump()`: Uses `z3.Optimize()` with friction penalty equations to solve $TP$ and $SL$ in 1.15ms. |
 | **PicoSpeed Bridge** | [`src/pico_speed_bridge.py`](file:///home/shogo/Prediction/src/pico_speed_bridge.py) | `PicoSpeedPredictionBridge.push_market_tick()`: Connects to `libsv_bridge.so` for 3.73μs SystemVerilog tick processing. |
-| **Dual Signal Generator** | [`src/generate_tomorrow_signals.py`](file:///home/shogo/Prediction/src/generate_tomorrow_signals.py) | `generate_dual_category_report()`: Evaluates 王道部門 (Mainstream Leaders) & 隠れ銘柄部門 (Hidden Gems) and outputs JSON report. |
+| **Dual Signal Generator** | [`src/generate_tomorrow_signals.py`](file:///home/shogo/Prediction/src/generate_tomorrow_signals.py) | `generate_dual_category_report()`: Evaluates Mainstream Leaders & Hidden Gems and outputs JSON report. |
+| **Image Report Generator** | [`src/image_report_generator.py`](file:///home/shogo/Prediction/src/image_report_generator.py) | `generate_executive_prediction_image()`: Generates executive high-resolution PNG report images for LINE/Discord messaging. |
 | **Auto-Trader Engine** | [`src/auto_trader.py`](file:///home/shogo/Prediction/src/auto_trader.py) | `ZeroCodeAutoTrader`: Reads `config.json`, listens to stream signals, and dispatches Webhook/Discord notifications. |
 
 ---
@@ -75,9 +76,9 @@ Unlike conventional trading models that rely on unverified backtests or black-bo
 ./install.sh
 ```
 
-### Generate Live Dual-Category Tomorrow Predictions
+### Generate Live Dual-Category Tomorrow Predictions (JSON + High-Res PNG + PDF)
 ```bash
-nix-shell shell.nix --run ".venv/bin/python src/generate_tomorrow_signals.py"
+nix-shell shell.nix --run ".venv/bin/python src/generate_tomorrow_signals.py && .venv/bin/python src/image_report_generator.py"
 ```
 
 ### Run 100% Reproducible Walk-Forward Backtest & 10 Proof Reporter
@@ -104,6 +105,8 @@ Prediction/
 ├── shell.nix                  # Nix Development Environment Config
 ├── reports/                   # Performance Reports & Dual Category Predictions
 │   ├── tomorrow_dual_signals_20260805.json # Live Tomorrow Signals (Dual Category)
+│   ├── tomorrow_prediction_report_20260805.png # Executive High-Res PNG Report Image
+│   ├── tomorrow_prediction_report_20260805.pdf # Executive Printable PDF Report
 │   ├── performance_summary.md # 10 Mandatory Evidentiary Proof Metrics
 │   ├── equity_curve.csv       # Daily/Weekly/Monthly Equity Curves Persistence
 │   └── predictions_vs_actual.csv # Prediction vs Actual Log Database
@@ -113,6 +116,8 @@ Prediction/
 │   └── predict-japan          # Global System CLI Utility
 └── src/
     ├── generate_tomorrow_signals.py # Live Tomorrow Dual-Category Signal Generator
+    ├── image_report_generator.py # Executive High-Res PNG Report Generator
+    ├── pdf_report_generator.py # Executive Printable PDF Report Generator
     ├── z3_jump_solver.py       # Z3 SMT Logic Solver & Friction Penalty Engine
     ├── pymc_aggregator.py      # PyMC Bayesian Uncertainty & Empirical Metrics Engine
     ├── pico_speed_bridge.py    # PicoSpeed 300ps SystemVerilog Bridge (libsv_bridge.so)
