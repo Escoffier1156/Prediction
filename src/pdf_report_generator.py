@@ -146,7 +146,7 @@ def generate_executive_prediction_pdf(
     # Clean Header
     story.append(Paragraph("日本株AI予測・買付推奨レポート", title_style))
     story.append(Spacer(1, 2))
-    story.append(Paragraph(f"<b>対象日:</b> {date_target} 市場オープン (08:30 寄前トリガー) 　/　 <b>全シグナル実効値控除済</b>", subtitle_style))
+    story.append(Paragraph(f"<b>対象日:</b> {date_target} 市場オープン (08:30 寄前トリガー)", subtitle_style))
     story.append(Spacer(1, 4))
     story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor('#0284C7'), spaceBefore=2, spaceAfter=8))
 
