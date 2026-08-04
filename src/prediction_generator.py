@@ -7,6 +7,7 @@ Executes Dual-Stage Live Predictions:
 
 import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import json
 import time
 from typing import Dict, Any, List
@@ -134,7 +135,7 @@ def run_prediction_pipeline(date_target: str = "2026-08-05") -> Dict[str, Any]:
     night_data = {
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         "stage": "Stage 1 (Night 19:00 Candidate Screening TOP 100)", "top100_signals": top100_processed,
-        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics([])
+        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(top100_processed)
     }
     os.makedirs("reports", exist_ok=True)
     with open("reports/tomorrow_top100_earnings_signals_20260805.json", "w", encoding="utf-8") as f:
@@ -166,7 +167,7 @@ def run_prediction_pipeline(date_target: str = "2026-08-05") -> Dict[str, Any]:
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         "stage": "Stage 2 (Morning 08:30 Final Execution TOP 20)",
         "mainstream_top10": m_signals, "hidden_gems_top10": h_signals,
-        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics([])
+        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals + h_signals)
     }
     with open("reports/tomorrow_dual_signals_20260805.json", "w", encoding="utf-8") as f:
         json.dump(morning_data, f, indent=2, ensure_ascii=False)
