@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+bin/
+dist/
+sample_market_data.parquet
+.DS_Store
+*.o
+*.out
