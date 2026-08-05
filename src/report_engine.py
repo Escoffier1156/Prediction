@@ -241,7 +241,25 @@ def generate_executive_png_images():
         if os.path.exists(temp_pdf_0930):
             os.remove(temp_pdf_0930)
 
-    # 3. Generate Night TOP 100 Candidate PNG Images (Page 1 & Page 2)
+    # 3. Generate Intraday 10:30 Execution PNG Image
+    intraday_1030_json = "reports/intraday_1030_signals_20260805.json"
+    temp_pdf_1030 = "reports/temp_top20_1030.pdf"
+    out_png_1030 = "reports/intraday_1030_prediction_report_20260805.png"
+
+    if os.path.exists(intraday_1030_json):
+        generate_top20_pdf_report(intraday_1030_json, temp_pdf_1030)
+        prefix1030 = "reports/temp_png_1030"
+        subprocess.run(f"pdftoppm -png -r 200 {temp_pdf_1030} {prefix1030}", shell=True, capture_output=True)
+        r_png_1030 = f"{prefix1030}-1.png"
+        if os.path.exists(r_png_1030):
+            if os.path.exists(out_png_1030):
+                os.remove(out_png_1030)
+            os.rename(r_png_1030, out_png_1030)
+            print(f"✔ Intraday 10:30 Execution PNG Created: {out_png_1030}")
+        if os.path.exists(temp_pdf_1030):
+            os.remove(temp_pdf_1030)
+
+    # 4. Generate Night TOP 100 Candidate PNG Images (Page 1 & Page 2)
     night_json = "reports/tomorrow_top100_earnings_signals_20260805.json"
     temp_pdf_100 = "reports/temp_top100.pdf"
     out_p1 = "reports/tomorrow_prediction_report_20260805_page1.png"
