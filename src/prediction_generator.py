@@ -15,11 +15,12 @@ from typing import Dict, Any, List
 from data_engine import JQuantsAPIClient
 from quant_solver import Z3JumpSolver, PyMCAggregator, EarningsDaytradeStrategy
 from report_engine import generate_executive_png_images
+from kabutan_scraper import KabutanScraper
 
 
-def run_prediction_pipeline(date_target: str = "2026-08-06") -> Dict[str, Any]:
+def run_prediction_pipeline(date_target: str = "2026-08-06", use_kabutan: bool = True) -> Dict[str, Any]:
     print("======================================================================")
-    print(f" 🚀 GENERATING DUAL-STAGE prediction signals for TOMORROW ({date_target})")
+    print(f" 🚀 GENERATING DUAL-STAGE prediction signals ({date_target}) [Kabutan Scraper: {use_kabutan}]")
     print("    Stage 1: Night 19:00 Candidate Screening TOP 100 List")
     print("    Stage 2: Morning 08:30 Final Execution TOP 20 Card")
     print("======================================================================")
@@ -28,6 +29,14 @@ def run_prediction_pipeline(date_target: str = "2026-08-06") -> Dict[str, Any]:
     solver = Z3JumpSolver()
     aggregator = PyMCAggregator()
     strategy = EarningsDaytradeStrategy()
+
+    kabutan_stocks = []
+    if use_kabutan:
+        try:
+            scraper = KabutanScraper()
+            kabutan_stocks = scraper.fetch_warning_universe("2_1")
+        except Exception as e:
+            print(f"⚠️ Kabutan fetch warning: {e}")
 
     raw_universe = [
         {"ticker": "6235.JP", "company_name": "オプトラン", "category_desc": "光学薄膜・決算上方修正", "days_since_earnings": 1, "volatility": 0.042, "turnover": 180.0, "is_hidden_gem": True},
@@ -103,6 +112,10 @@ def run_prediction_pipeline(date_target: str = "2026-08-06") -> Dict[str, Any]:
             "is_hidden_gem": turn_val < 1500.0
         })
 
+    if kabutan_stocks:
+        print(f"🔥 Injecting {len(kabutan_stocks)} live Kabutan alert stocks into prediction universe!")
+        raw_universe = kabutan_stocks + raw_universe
+
     while len(raw_universe) < 100:
         idx_p = len(raw_universe) + 1000
         raw_universe.append({
@@ -115,7 +128,7 @@ def run_prediction_pipeline(date_target: str = "2026-08-06") -> Dict[str, Any]:
     # 1. Stage 1: Night 19:00 TOP 100 Candidates
     night_100 = strategy.screen_night_top100(filtered)
 
-    # Closing price mapping from today's TSE session (2026-08-05 close)
+    # Closing price mapping from today's TSE session & Kabutan live prices
     close_price_map = {
         "6920.JP": 46200.0, "6146.JP": 63500.0, "9984.JP": 10480.0, "8035.JP": 58900.0,
         "7011.JP": 4310.0, "6315.JP": 7720.0, "6235.JP": 2580.0, "6266.JP": 3640.0,
@@ -123,6 +136,8 @@ def run_prediction_pipeline(date_target: str = "2026-08-06") -> Dict[str, Any]:
         "4755.JP": 935.0, "9107.JP": 2995.0, "4751.JP": 1535.0, "2413.JP": 1740.0,
         "6890.JP": 3440.0, "4369.JP": 3330.0, "2127.JP": 758.0, "7211.JP": 2710.0
     }
+    for ks in kabutan_stocks:
+        close_price_map[ks["ticker"]] = ks["entry_price"]
 
     top100_processed = []
     for rank_i, item in enumerate(night_100, start=1):

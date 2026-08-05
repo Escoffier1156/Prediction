@@ -1,163 +1,10 @@
 {
   "prediction_date": "2026-08-06",
-  "generated_at": "2026-08-05 15:29:36",
+  "generated_at": "2026-08-05 23:44:25",
   "stage": "Stage 1 (Night 19:00 Candidate Screening TOP 100)",
   "top100_signals": [
     {
       "rank": 1,
-      "ticker": "9433.JP",
-      "company_name": "KDDI",
-      "category_desc": "5G通信・ローソンシナジー",
-      "entry_price": 2873.5,
-      "take_profit": 2903.9,
-      "stop_loss": 2850.8,
-      "tp_pct": 1.25,
-      "sl_pct": -0.6,
-      "probability_pct": 60.4,
-      "risk_reward": 1.34,
-      "friction_deducted_pct": 0.19,
-      "volatility": 0.014,
-      "turnover": 3800.0,
-      "is_hidden_gem": false
-    },
-    {
-      "rank": 2,
-      "ticker": "9735.JP",
-      "company_name": "セコム",
-      "category_desc": "警備・防犯需要増",
-      "entry_price": 10540.0,
-      "take_profit": 10650.3,
-      "stop_loss": 10455.7,
-      "tp_pct": 1.25,
-      "sl_pct": -0.6,
-      "probability_pct": 60.4,
-      "risk_reward": 1.31,
-      "friction_deducted_pct": 0.2,
-      "volatility": 0.014,
-      "turnover": 1700.0,
-      "is_hidden_gem": false
-    },
-    {
-      "rank": 3,
-      "ticker": "9022.JP",
-      "company_name": "JR東海",
-      "category_desc": "新幹線・旅客回復",
-      "entry_price": 3820.0,
-      "take_profit": 3860.5,
-      "stop_loss": 3789.6,
-      "tp_pct": 1.26,
-      "sl_pct": -0.6,
-      "probability_pct": 60.3,
-      "risk_reward": 1.33,
-      "friction_deducted_pct": 0.2,
-      "volatility": 0.015,
-      "turnover": 2200.0,
-      "is_hidden_gem": false
-    },
-    {
-      "rank": 4,
-      "ticker": "9020.JP",
-      "company_name": "JR東日本",
-      "category_desc": "鉄道・インバウンド急増",
-      "entry_price": 3408.0,
-      "take_profit": 3444.4,
-      "stop_loss": 3380.8,
-      "tp_pct": 1.27,
-      "sl_pct": -0.6,
-      "probability_pct": 60.2,
-      "risk_reward": 1.34,
-      "friction_deducted_pct": 0.2,
-      "volatility": 0.016,
-      "turnover": 1900.0,
-      "is_hidden_gem": false
-    },
-    {
-      "rank": 5,
-      "ticker": "7203.JP",
-      "company_name": "トヨタ自動車",
-      "category_desc": "自動車・決算上方修正",
-      "entry_price": 2850.0,
-      "take_profit": 2884.1,
-      "stop_loss": 2826.4,
-      "tp_pct": 1.38,
-      "sl_pct": -0.65,
-      "probability_pct": 60.1,
-      "risk_reward": 1.44,
-      "friction_deducted_pct": 0.18,
-      "volatility": 0.018,
-      "turnover": 9500.0,
-      "is_hidden_gem": false
-    },
-    {
-      "rank": 6,
-      "ticker": "8267.JP",
-      "company_name": "イオン",
-      "category_desc": "スーパー・金融事業成長",
-      "entry_price": 3410.0,
-      "take_profit": 3450.2,
-      "stop_loss": 3381.1,
-      "tp_pct": 1.38,
-      "sl_pct": -0.65,
-      "probability_pct": 60.1,
-      "risk_reward": 1.39,
-      "friction_deducted_pct": 0.2,
-      "volatility": 0.018,
-      "turnover": 1900.0,
-      "is_hidden_gem": false
-    },
-    {
-      "rank": 7,
-      "ticker": "2802.JP",
-      "company_name": "味の素",
-      "category_desc": "ヘルスケア・アミノ酸",
-      "entry_price": 4953.0,
-      "take_profit": 5011.2,
-      "stop_loss": 4910.8,
-      "tp_pct": 1.38,
-      "sl_pct": -0.65,
-      "probability_pct": 60.1,
-      "risk_reward": 1.38,
-      "friction_deducted_pct": 0.2,
-      "volatility": 0.018,
-      "turnover": 1500.0,
-      "is_hidden_gem": false
-    },
-    {
-      "rank": 8,
-      "ticker": "1928.JP",
-      "company_name": "積水ハウス",
-      "category_desc": "戸建て・米国買収効果",
-      "entry_price": 3340.0,
-      "take_profit": 3379.3,
-      "stop_loss": 3311.6,
-      "tp_pct": 1.38,
-      "sl_pct": -0.65,
-      "probability_pct": 60.1,
-      "risk_reward": 1.38,
-      "friction_deducted_pct": 0.2,
-      "volatility": 0.018,
-      "turnover": 1600.0,
-      "is_hidden_gem": false
-    },
-    {
-      "rank": 9,
-      "ticker": "4502.JP",
-      "company_name": "武田薬品工業",
-      "category_desc": "医薬品・パイプライン好調",
-      "entry_price": 5286.0,
-      "take_profit": 5343.7,
-      "stop_loss": 5243.5,
-      "tp_pct": 1.29,
-      "sl_pct": -0.61,
-      "probability_pct": 60.1,
-      "risk_reward": 1.36,
-      "friction_deducted_pct": 0.2,
-      "volatility": 0.017,
-      "turnover": 2500.0,
-      "is_hidden_gem": false
-    },
-    {
-      "rank": 10,
       "ticker": "7751.JP",
       "company_name": "キヤノン",
       "category_desc": "精密機器・医療機器成長",
@@ -174,24 +21,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 11,
-      "ticker": "1925.JP",
-      "company_name": "大和ハウス工業",
-      "category_desc": "物流施設・米国住宅",
-      "entry_price": 4544.0,
-      "take_profit": 4601.1,
-      "stop_loss": 4504.0,
-      "tp_pct": 1.46,
-      "sl_pct": -0.68,
-      "probability_pct": 60.0,
-      "risk_reward": 1.43,
-      "friction_deducted_pct": 0.2,
-      "volatility": 0.019,
-      "turnover": 1700.0,
-      "is_hidden_gem": false
-    },
-    {
-      "rank": 12,
+      "rank": 2,
       "ticker": "6861.JP",
       "company_name": "キーエンス",
       "category_desc": "電気機器・高粗利益率維持",
@@ -208,7 +38,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 13,
+      "rank": 3,
       "ticker": "8001.JP",
       "company_name": "伊藤忠商事",
       "category_desc": "大手商社・非資源強み",
@@ -225,7 +55,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 14,
+      "rank": 4,
       "ticker": "4661.JP",
       "company_name": "オリエンタルランド",
       "category_desc": "テーマパーク・客単価高",
@@ -242,7 +72,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 15,
+      "rank": 5,
       "ticker": "8830.JP",
       "company_name": "住友不動産",
       "category_desc": "マンション販売・オフィス",
@@ -259,7 +89,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 16,
+      "rank": 6,
       "ticker": "7974.JP",
       "company_name": "任天堂",
       "category_desc": "その他製品・IP収益拡大",
@@ -276,7 +106,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 17,
+      "rank": 7,
       "ticker": "8766.JP",
       "company_name": "東京海上HD",
       "category_desc": "損保・政策保有株売却",
@@ -293,7 +123,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 18,
+      "rank": 8,
       "ticker": "7267.JP",
       "company_name": "本田技研工業",
       "category_desc": "四輪二輪・北米堅調",
@@ -310,7 +140,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 19,
+      "rank": 9,
       "ticker": "8053.JP",
       "company_name": "住友商事",
       "category_desc": "資源流動・緑化事業",
@@ -327,7 +157,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 20,
+      "rank": 10,
       "ticker": "6501.JP",
       "company_name": "日立製作所",
       "category_desc": "電気機器・IT増益",
@@ -344,7 +174,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 21,
+      "rank": 11,
       "ticker": "8031.JP",
       "company_name": "三井物産",
       "category_desc": "資源・LNG高利益",
@@ -361,7 +191,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 22,
+      "rank": 12,
       "ticker": "8725.JP",
       "company_name": "MS&ADインシュアランス",
       "category_desc": "損保・自社株買い拡充",
@@ -378,7 +208,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 23,
+      "rank": 13,
       "ticker": "6758.JP",
       "company_name": "ソニーグループ",
       "category_desc": "電気機器・ゲーム音楽好調",
@@ -395,7 +225,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 24,
+      "rank": 14,
       "ticker": "8058.JP",
       "company_name": "三菱商事",
       "category_desc": "総合商社・還元積極",
@@ -412,7 +242,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 25,
+      "rank": 15,
       "ticker": "6902.JP",
       "company_name": "デンソー",
       "category_desc": "車載半導体・電動化",
@@ -429,7 +259,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 26,
+      "rank": 16,
       "ticker": "8802.JP",
       "company_name": "三菱地所",
       "category_desc": "丸の内再開発・ホテル",
@@ -446,7 +276,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 27,
+      "rank": 17,
       "ticker": "9983.JP",
       "company_name": "ファーストリテイリング",
       "category_desc": "小売り・海外成長加速",
@@ -463,7 +293,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 28,
+      "rank": 18,
       "ticker": "6301.JP",
       "company_name": "小松製作所",
       "category_desc": "建機・鉱山機械北米需要",
@@ -480,7 +310,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 29,
+      "rank": 19,
       "ticker": "8002.JP",
       "company_name": "丸紅",
       "category_desc": "アグリ・電力好調",
@@ -497,7 +327,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 30,
+      "rank": 20,
       "ticker": "8308.JP",
       "company_name": "りそなHD",
       "category_desc": "リテール銀行・金利上昇",
@@ -514,7 +344,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 31,
+      "rank": 21,
       "ticker": "8801.JP",
       "company_name": "三井不動産",
       "category_desc": "不動産・ビル再開発",
@@ -531,7 +361,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 32,
+      "rank": 22,
       "ticker": "6503.JP",
       "company_name": "三菱電機",
       "category_desc": "重電・FA機器復調",
@@ -548,7 +378,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 33,
+      "rank": 23,
       "ticker": "7532.JP",
       "company_name": "パン・パシフィックHD",
       "category_desc": "ドンキ・インバウンド爆発",
@@ -565,7 +395,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 34,
+      "rank": 24,
       "ticker": "8306.JP",
       "company_name": "三菱UFJフィナンシャルG",
       "category_desc": "銀行業・大規模自社株買い",
@@ -582,7 +412,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 35,
+      "rank": 25,
       "ticker": "6367.JP",
       "company_name": "ダイキン工業",
       "category_desc": "空調・欧米成長",
@@ -599,7 +429,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 36,
+      "rank": 26,
       "ticker": "8750.JP",
       "company_name": "第一生命HD",
       "category_desc": "生保・海外保険伸長",
@@ -616,7 +446,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 37,
+      "rank": 27,
       "ticker": "7270.JP",
       "company_name": "SUBARU",
       "category_desc": "北米SUV・高利益率",
@@ -633,7 +463,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 38,
+      "rank": 28,
       "ticker": "8316.JP",
       "company_name": "三井住友フィナンシャルG",
       "category_desc": "銀行業・増配アナウンス",
@@ -650,7 +480,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 39,
+      "rank": 29,
       "ticker": "8411.JP",
       "company_name": "みずほFG",
       "category_desc": "大口融資・金利高享受",
@@ -667,7 +497,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 40,
+      "rank": 30,
       "ticker": "6702.JP",
       "company_name": "富士通",
       "category_desc": "情報通信・クラウド好調",
@@ -684,7 +514,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 41,
+      "rank": 31,
       "ticker": "4063.JP",
       "company_name": "信越化学工業",
       "category_desc": "塩ビシリコーン・世界首位",
@@ -701,7 +531,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 42,
+      "rank": 32,
       "ticker": "4519.JP",
       "company_name": "中外製薬",
       "category_desc": "抗体医薬・過去最高益",
@@ -718,7 +548,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 43,
+      "rank": 33,
       "ticker": "8601.JP",
       "company_name": "大和証券グループ頭",
       "category_desc": "リテール・Wealth",
@@ -735,7 +565,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 44,
+      "rank": 34,
       "ticker": "6981.JP",
       "company_name": "村田製作所",
       "category_desc": "積層コンデンサ復調",
@@ -752,7 +582,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 45,
+      "rank": 35,
       "ticker": "4689.JP",
       "company_name": "LINEヤフー",
       "category_desc": "検索広告・PayPay成長",
@@ -769,7 +599,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 46,
+      "rank": 36,
       "ticker": "9843.JP",
       "company_name": "ニトリホールディングス",
       "category_desc": "家具インテリア・円高メリット",
@@ -786,7 +616,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 47,
+      "rank": 37,
       "ticker": "3382.JP",
       "company_name": "セブン＆アイHD",
       "category_desc": "コンビニ・買収提案思惑",
@@ -803,7 +633,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 48,
+      "rank": 38,
       "ticker": "9101.JP",
       "company_name": "日本郵船",
       "category_desc": "海運・コンテナ運賃復調",
@@ -820,7 +650,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 49,
+      "rank": 39,
       "ticker": "6098.JP",
       "company_name": "リクルートホールディングス",
       "category_desc": "Indeed・人材マッチング",
@@ -837,7 +667,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 50,
+      "rank": 40,
       "ticker": "4568.JP",
       "company_name": "第一三共",
       "category_desc": "ADC抗がん剤・売上急増",
@@ -854,7 +684,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 51,
+      "rank": 41,
       "ticker": "8604.JP",
       "company_name": "野村ホールディングス",
       "category_desc": "インベストメント・WM復調",
@@ -871,7 +701,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 52,
+      "rank": 42,
       "ticker": "9104.JP",
       "company_name": "商船三井",
       "category_desc": "LNG船・自動車船好調",
@@ -888,7 +718,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 53,
+      "rank": 43,
       "ticker": "8473.JP",
       "company_name": "SBIホールディングス",
       "category_desc": "証券・暗号資産好調",
@@ -905,7 +735,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 54,
+      "rank": 44,
       "ticker": "9107.JP",
       "company_name": "川崎汽船",
       "category_desc": "ドライバルク・自社株買い",
@@ -922,7 +752,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 55,
+      "rank": 45,
       "ticker": "7011.JP",
       "company_name": "三菱重工業",
       "category_desc": "防衛・ガスタービン好調",
@@ -939,7 +769,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 56,
+      "rank": 46,
       "ticker": "8035.JP",
       "company_name": "東京エレクトロン",
       "category_desc": "半導体・受注残過去最高",
@@ -956,7 +786,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 57,
+      "rank": 47,
       "ticker": "7012.JP",
       "company_name": "川崎重工業",
       "category_desc": "航空宇宙・二輪事業復調",
@@ -973,41 +803,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 58,
-      "ticker": "2503.JP",
-      "company_name": "キリンHD",
-      "category_desc": "クラフトビール・豪州",
-      "entry_price": 2856.0,
-      "take_profit": 2887.9,
-      "stop_loss": 2831.3,
-      "tp_pct": 1.39,
-      "sl_pct": -0.6,
-      "probability_pct": 58.2,
-      "risk_reward": 1.29,
-      "friction_deducted_pct": 0.27,
-      "volatility": 0.016,
-      "turnover": 1100.0,
-      "is_hidden_gem": true
-    },
-    {
-      "rank": 59,
-      "ticker": "2702.JP",
-      "company_name": "日本マクドナルドHD",
-      "category_desc": "外食・既存店売上高伸長",
-      "entry_price": 6230.0,
-      "take_profit": 6299.2,
-      "stop_loss": 6175.5,
-      "tp_pct": 1.39,
-      "sl_pct": -0.6,
-      "probability_pct": 58.2,
-      "risk_reward": 1.27,
-      "friction_deducted_pct": 0.28,
-      "volatility": 0.016,
-      "turnover": 750.0,
-      "is_hidden_gem": true
-    },
-    {
-      "rank": 60,
+      "rank": 48,
       "ticker": "7013.JP",
       "company_name": "IHI",
       "category_desc": "防衛・航空エンジン民間需要",
@@ -1024,7 +820,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 61,
+      "rank": 49,
       "ticker": "4755.JP",
       "company_name": "楽天グループ",
       "category_desc": "モバイル赤字縮小",
@@ -1041,58 +837,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 62,
-      "ticker": "2502.JP",
-      "company_name": "アサヒグループHD",
-      "category_desc": "欧州ビール・プレミアム",
-      "entry_price": 1628.5,
-      "take_profit": 1647.3,
-      "stop_loss": 1614.3,
-      "tp_pct": 1.42,
-      "sl_pct": -0.61,
-      "probability_pct": 58.1,
-      "risk_reward": 1.32,
-      "friction_deducted_pct": 0.26,
-      "volatility": 0.017,
-      "turnover": 1400.0,
-      "is_hidden_gem": true
-    },
-    {
-      "rank": 63,
-      "ticker": "4684.JP",
-      "company_name": "オービック",
-      "category_desc": "ERPソフト・連続高益",
-      "entry_price": 4373.0,
-      "take_profit": 4423.4,
-      "stop_loss": 4334.9,
-      "tp_pct": 1.42,
-      "sl_pct": -0.61,
-      "probability_pct": 58.1,
-      "risk_reward": 1.32,
-      "friction_deducted_pct": 0.26,
-      "volatility": 0.017,
-      "turnover": 1400.0,
-      "is_hidden_gem": true
-    },
-    {
-      "rank": 64,
-      "ticker": "2897.JP",
-      "company_name": "日清食品HD",
-      "category_desc": "即席麺・海外値上げ浸透",
-      "entry_price": 4120.0,
-      "take_profit": 4174.4,
-      "stop_loss": 4081.1,
-      "tp_pct": 1.59,
-      "sl_pct": -0.68,
-      "probability_pct": 58.0,
-      "risk_reward": 1.4,
-      "friction_deducted_pct": 0.27,
-      "volatility": 0.019,
-      "turnover": 1200.0,
-      "is_hidden_gem": true
-    },
-    {
-      "rank": 65,
+      "rank": 50,
       "ticker": "9984.JP",
       "company_name": "ソフトバンクグループ",
       "category_desc": "情報・通信・投資黒字浮上",
@@ -1109,7 +854,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 66,
+      "rank": 51,
       "ticker": "4768.JP",
       "company_name": "大塚商会",
       "category_desc": "ITソリューション・複写機",
@@ -1126,7 +871,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 67,
+      "rank": 52,
       "ticker": "4503.JP",
       "company_name": "アステラス製薬",
       "category_desc": "新薬販売加速",
@@ -1143,7 +888,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 68,
+      "rank": 53,
       "ticker": "9613.JP",
       "company_name": "NTTデータ",
       "category_desc": "ITサービス・海外M&A",
@@ -1160,7 +905,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 69,
+      "rank": 54,
       "ticker": "1812.JP",
       "company_name": "鹿島建設",
       "category_desc": "土木・開発事業好調",
@@ -1177,7 +922,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 70,
+      "rank": 55,
       "ticker": "9202.JP",
       "company_name": "ANAホールディングス",
       "category_desc": "旅客需要V字",
@@ -1194,7 +939,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 71,
+      "rank": 56,
       "ticker": "1801.JP",
       "company_name": "大成建設",
       "category_desc": "ゼネコン・大型工事採算改善",
@@ -1211,7 +956,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 72,
+      "rank": 57,
       "ticker": "7911.JP",
       "company_name": "TOPPANホールディングス",
       "category_desc": "エレクトロニクス・パッケージ",
@@ -1228,7 +973,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 73,
+      "rank": 58,
       "ticker": "7733.JP",
       "company_name": "オリンパス",
       "category_desc": "内視鏡・海外高シェア",
@@ -1245,7 +990,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 74,
+      "rank": 59,
       "ticker": "3407.JP",
       "company_name": "旭化成",
       "category_desc": "住宅マテリアル・電子",
@@ -1262,7 +1007,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 75,
+      "rank": 60,
       "ticker": "1802.JP",
       "company_name": "大林組",
       "category_desc": "建設・政策保有売却益",
@@ -1279,7 +1024,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 76,
+      "rank": 61,
       "ticker": "7912.JP",
       "company_name": "大日本印刷",
       "category_desc": "印刷・半導体用フォトマスク",
@@ -1296,7 +1041,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 77,
+      "rank": 62,
       "ticker": "9201.JP",
       "company_name": "日本航空",
       "category_desc": "国際線・高単価維持",
@@ -1313,7 +1058,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 78,
+      "rank": 63,
       "ticker": "4188.JP",
       "company_name": "三菱ケミカルグループ",
       "category_desc": "MMA樹脂・構造改革",
@@ -1330,7 +1075,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 79,
+      "rank": 64,
       "ticker": "3402.JP",
       "company_name": "東レ",
       "category_desc": "炭素繊維・ボーイング採用",
@@ -1347,7 +1092,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 80,
+      "rank": 65,
       "ticker": "1803.JP",
       "company_name": "清水建設",
       "category_desc": "建築・建築採算回復",
@@ -1364,7 +1109,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 81,
+      "rank": 66,
       "ticker": "6146.JP",
       "company_name": "ディスコ",
       "category_desc": "半導体製造装置・最高益更新",
@@ -1381,7 +1126,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 82,
+      "rank": 67,
       "ticker": "6302.JP",
       "company_name": "住友重機械工業",
       "category_desc": "減速機・プラント好調",
@@ -1398,7 +1143,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 83,
+      "rank": 68,
       "ticker": "3092.JP",
       "company_name": "ZOZO",
       "category_desc": "アパレルEC・高粗利益",
@@ -1415,7 +1160,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 84,
+      "rank": 69,
       "ticker": "4980.JP",
       "company_name": "デクセリアルズ",
       "category_desc": "高機能材料・超高利益率",
@@ -1432,7 +1177,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 85,
+      "rank": 70,
       "ticker": "9684.JP",
       "company_name": "スクウェア・エニックス",
       "category_desc": "HDゲーム・大型IP",
@@ -1449,7 +1194,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 86,
+      "rank": 71,
       "ticker": "6807.JP",
       "company_name": "日本航空電子工業",
       "category_desc": "電子部品・好決算発表",
@@ -1466,7 +1211,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 87,
+      "rank": 72,
       "ticker": "6920.JP",
       "company_name": "レーザーテック",
       "category_desc": "EUV検査・受注最高益",
@@ -1483,7 +1228,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 88,
+      "rank": 73,
       "ticker": "6506.JP",
       "company_name": "安川電機",
       "category_desc": "ロボット・受注回復",
@@ -1500,7 +1245,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 89,
+      "rank": 74,
       "ticker": "7220.JP",
       "company_name": "武蔵精密工業",
       "category_desc": "EV/AI駆動・大口買集め",
@@ -1517,7 +1262,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 90,
+      "rank": 75,
       "ticker": "3659.JP",
       "company_name": "ネクソン",
       "category_desc": "PCオンライン・新作 hit",
@@ -1534,7 +1279,109 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 91,
+      "rank": 76,
+      "ticker": "7272.JP",
+      "company_name": "ヤマハ発",
+      "category_desc": "株探急上昇【東証プライム】前日比+19.46%",
+      "entry_price": 7272.0,
+      "take_profit": 7593.5,
+      "stop_loss": 7129.6,
+      "tp_pct": 4.59,
+      "sl_pct": -1.8,
+      "probability_pct": 56.7,
+      "risk_reward": 2.26,
+      "friction_deducted_pct": 0.16,
+      "volatility": 0.068,
+      "turnover": 250809.1,
+      "is_hidden_gem": false
+    },
+    {
+      "rank": 77,
+      "ticker": "4062.JP",
+      "company_name": "イビデン",
+      "category_desc": "株探急上昇【東証プライム】前日比+24.49%",
+      "entry_price": 4062.0,
+      "take_profit": 4241.2,
+      "stop_loss": 3982.1,
+      "tp_pct": 4.59,
+      "sl_pct": -1.8,
+      "probability_pct": 56.7,
+      "risk_reward": 2.24,
+      "friction_deducted_pct": 0.17,
+      "volatility": 0.068,
+      "turnover": 36602.3,
+      "is_hidden_gem": false
+    },
+    {
+      "rank": 78,
+      "ticker": "4022.JP",
+      "company_name": "ラサ工",
+      "category_desc": "株探急上昇【東証プライム】前日比+16.07%",
+      "entry_price": 4022.0,
+      "take_profit": 4199.0,
+      "stop_loss": 3942.5,
+      "tp_pct": 4.59,
+      "sl_pct": -1.8,
+      "probability_pct": 56.7,
+      "risk_reward": 2.23,
+      "friction_deducted_pct": 0.18,
+      "volatility": 0.068,
+      "turnover": 9056.3,
+      "is_hidden_gem": false
+    },
+    {
+      "rank": 79,
+      "ticker": "1980.JP",
+      "company_name": "ダイダン",
+      "category_desc": "株探急上昇【東証プライム】前日比+17.75%",
+      "entry_price": 1980.0,
+      "take_profit": 2067.1,
+      "stop_loss": 1940.8,
+      "tp_pct": 4.59,
+      "sl_pct": -1.8,
+      "probability_pct": 56.7,
+      "risk_reward": 2.22,
+      "friction_deducted_pct": 0.18,
+      "volatility": 0.068,
+      "turnover": 6838.3,
+      "is_hidden_gem": false
+    },
+    {
+      "rank": 80,
+      "ticker": "6278.JP",
+      "company_name": "ユニオンツル",
+      "category_desc": "株探急上昇【東証プライム】前日比+16.82%",
+      "entry_price": 6278.0,
+      "take_profit": 6553.9,
+      "stop_loss": 6153.5,
+      "tp_pct": 4.59,
+      "sl_pct": -1.8,
+      "probability_pct": 56.7,
+      "risk_reward": 2.22,
+      "friction_deducted_pct": 0.19,
+      "volatility": 0.068,
+      "turnover": 5083.3,
+      "is_hidden_gem": false
+    },
+    {
+      "rank": 81,
+      "ticker": "4968.JP",
+      "company_name": "荒川化",
+      "category_desc": "株探急上昇【東証プライム】前日比+20.65%",
+      "entry_price": 4968.0,
+      "take_profit": 5186.1,
+      "stop_loss": 4869.2,
+      "tp_pct": 4.59,
+      "sl_pct": -1.8,
+      "probability_pct": 56.7,
+      "risk_reward": 2.21,
+      "friction_deducted_pct": 0.19,
+      "volatility": 0.068,
+      "turnover": 3352.4,
+      "is_hidden_gem": false
+    },
+    {
+      "rank": 82,
       "ticker": "4369.JP",
       "company_name": "トリケミカル研究所",
       "category_desc": "先端材料・利益率V字回復",
@@ -1551,7 +1398,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 92,
+      "rank": 83,
       "ticker": "4751.JP",
       "company_name": "サイバーエージェント",
       "category_desc": "ゲーム・ABEMA黒字",
@@ -1568,7 +1415,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 93,
+      "rank": 84,
       "ticker": "6890.JP",
       "company_name": "フェローテックHD",
       "category_desc": "半導体マテリアル・高成長",
@@ -1585,7 +1432,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 94,
+      "rank": 85,
       "ticker": "7211.JP",
       "company_name": "三菱自動車",
       "category_desc": "東南ア・構造改革",
@@ -1602,7 +1449,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 95,
+      "rank": 86,
       "ticker": "2413.JP",
       "company_name": "エムスリー",
       "category_desc": "医療プラットフォーム・製薬支援",
@@ -1619,7 +1466,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 96,
+      "rank": 87,
       "ticker": "6707.JP",
       "company_name": "サンケン電気",
       "category_desc": "パワー半導体・PBR格安復調",
@@ -1636,7 +1483,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 97,
+      "rank": 88,
       "ticker": "2127.JP",
       "company_name": "日本M&AセンターHD",
       "category_desc": "事業承継M&A・成約数V字",
@@ -1653,7 +1500,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 98,
+      "rank": 89,
       "ticker": "6266.JP",
       "company_name": "タツモ",
       "category_desc": "半導体洗浄装置・サプライズ修正",
@@ -1670,7 +1517,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 99,
+      "rank": 90,
       "ticker": "6235.JP",
       "company_name": "オプトラン",
       "category_desc": "光学薄膜・決算上方修正",
@@ -1687,7 +1534,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 100,
+      "rank": 91,
       "ticker": "6315.JP",
       "company_name": "TOWA",
       "category_desc": "半導体モールディング・出来高急増",
@@ -1702,14 +1549,167 @@
       "volatility": 0.048,
       "turnover": 550.0,
       "is_hidden_gem": true
+    },
+    {
+      "rank": 92,
+      "ticker": "3907.JP",
+      "company_name": "シリコンスタ",
+      "category_desc": "株探急上昇【東証スタンダード】前日比+24.79%",
+      "entry_price": 3907.0,
+      "take_profit": 4090.6,
+      "stop_loss": 3827.5,
+      "tp_pct": 4.95,
+      "sl_pct": -1.8,
+      "probability_pct": 54.7,
+      "risk_reward": 2.31,
+      "friction_deducted_pct": 0.24,
+      "volatility": 0.068,
+      "turnover": 10226.6,
+      "is_hidden_gem": true
+    },
+    {
+      "rank": 93,
+      "ticker": "6994.JP",
+      "company_name": "指月電",
+      "category_desc": "株探急上昇【東証スタンダード】前日比+17.44%",
+      "entry_price": 6994.0,
+      "take_profit": 7322.7,
+      "stop_loss": 6851.8,
+      "tp_pct": 4.95,
+      "sl_pct": -1.8,
+      "probability_pct": 54.7,
+      "risk_reward": 2.31,
+      "friction_deducted_pct": 0.24,
+      "volatility": 0.068,
+      "turnover": 13003.2,
+      "is_hidden_gem": true
+    },
+    {
+      "rank": 94,
+      "ticker": "4475.JP",
+      "company_name": "ＨＥＮＮＧＥ",
+      "category_desc": "株探急上昇【東証グロース】前日比+16.76%",
+      "entry_price": 4475.0,
+      "take_profit": 4685.3,
+      "stop_loss": 4384.0,
+      "tp_pct": 4.95,
+      "sl_pct": -1.8,
+      "probability_pct": 54.7,
+      "risk_reward": 2.31,
+      "friction_deducted_pct": 0.24,
+      "volatility": 0.068,
+      "turnover": 11367.4,
+      "is_hidden_gem": true
+    },
+    {
+      "rank": 95,
+      "ticker": "7480.JP",
+      "company_name": "スズデン",
+      "category_desc": "株探急上昇【東証スタンダード】前日比+16.17%",
+      "entry_price": 7480.0,
+      "take_profit": 7830.8,
+      "stop_loss": 7327.1,
+      "tp_pct": 4.95,
+      "sl_pct": -1.8,
+      "probability_pct": 54.7,
+      "risk_reward": 2.29,
+      "friction_deducted_pct": 0.25,
+      "volatility": 0.068,
+      "turnover": 4390.0,
+      "is_hidden_gem": true
+    },
+    {
+      "rank": 96,
+      "ticker": "4461.JP",
+      "company_name": "一工薬",
+      "category_desc": "株探急上昇【東証プライム】前日比+17.6%",
+      "entry_price": 4461.0,
+      "take_profit": 4669.5,
+      "stop_loss": 4369.1,
+      "tp_pct": 4.95,
+      "sl_pct": -1.8,
+      "probability_pct": 54.7,
+      "risk_reward": 2.27,
+      "friction_deducted_pct": 0.26,
+      "volatility": 0.068,
+      "turnover": 1396.3,
+      "is_hidden_gem": true
+    },
+    {
+      "rank": 97,
+      "ticker": "3036.JP",
+      "company_name": "アルコニクス",
+      "category_desc": "株探急上昇【東証プライム】前日比+18.84%",
+      "entry_price": 3036.0,
+      "take_profit": 3177.5,
+      "stop_loss": 2973.2,
+      "tp_pct": 4.95,
+      "sl_pct": -1.8,
+      "probability_pct": 54.7,
+      "risk_reward": 2.25,
+      "friction_deducted_pct": 0.27,
+      "volatility": 0.068,
+      "turnover": 800.0,
+      "is_hidden_gem": true
+    },
+    {
+      "rank": 98,
+      "ticker": "4635.JP",
+      "company_name": "東インキ",
+      "category_desc": "株探急上昇【東証スタンダード】前日比+21.85%",
+      "entry_price": 4635.0,
+      "take_profit": 4850.1,
+      "stop_loss": 4538.2,
+      "tp_pct": 4.95,
+      "sl_pct": -1.8,
+      "probability_pct": 54.7,
+      "risk_reward": 2.22,
+      "friction_deducted_pct": 0.29,
+      "volatility": 0.068,
+      "turnover": 372.2,
+      "is_hidden_gem": true
+    },
+    {
+      "rank": 99,
+      "ticker": "4746.JP",
+      "company_name": "東計電算",
+      "category_desc": "株探急上昇【東証スタンダード】前日比+17.76%",
+      "entry_price": 4746.0,
+      "take_profit": 4964.3,
+      "stop_loss": 4645.0,
+      "tp_pct": 4.95,
+      "sl_pct": -1.8,
+      "probability_pct": 54.7,
+      "risk_reward": 2.16,
+      "friction_deducted_pct": 0.33,
+      "volatility": 0.068,
+      "turnover": 150.0,
+      "is_hidden_gem": true
+    },
+    {
+      "rank": 100,
+      "ticker": "3954.JP",
+      "company_name": "昭和パックス",
+      "category_desc": "株探急上昇【東証スタンダード】前日比+17.5%",
+      "entry_price": 3954.0,
+      "take_profit": 4135.9,
+      "stop_loss": 3869.9,
+      "tp_pct": 4.95,
+      "sl_pct": -1.8,
+      "probability_pct": 54.7,
+      "risk_reward": 2.16,
+      "friction_deducted_pct": 0.33,
+      "volatility": 0.068,
+      "turnover": 150.0,
+      "is_hidden_gem": true
     }
   ],
   "empirical_proof_metrics": {
-    "empirical_win_rate_pct": 58.59,
-    "empirical_sharpe_ratio": 3.15,
+    "empirical_win_rate_pct": 57.99,
+    "empirical_sharpe_ratio": 3.03,
     "empirical_max_drawdown_pct": 3.5,
-    "empirical_avg_profit_pct": 1.24,
-    "empirical_avg_loss_pct": -0.62,
+    "empirical_avg_profit_pct": 1.63,
+    "empirical_avg_loss_pct": -0.81,
     "look_ahead_bias_check": "PASSED (Zero Future Leakage - Strict Timestamp Filtering)",
     "money_management": "Kelly Criterion Applied (0.5%-1.0% Risk / Trade)"
   }
