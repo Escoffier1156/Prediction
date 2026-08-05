@@ -1,6 +1,6 @@
 {
   "prediction_date": "2026-08-05",
-  "generated_at": "2026-08-05 10:14:16",
+  "generated_at": "2026-08-05 10:17:09",
   "stage": "Stage 2 (Morning 08:30 Final Execution TOP 20)",
   "report_title": "日本株AI予測・08:30最終実行買付推奨レポート",
   "report_subtitle": "<b>対象日:</b> 2026-08-05 市場オープン (08:30 寄前気配反映 TOP 20 厳選データ)",
@@ -16,7 +16,10 @@
       "sl_pct": -1.8,
       "probability_pct": 56.9,
       "risk_reward": 2.21,
-      "friction_deducted_pct": 0.18
+      "friction_deducted_pct": 0.18,
+      "volatility": 0.058,
+      "turnover": 12000.0,
+      "is_hidden_gem": false
     },
     {
       "ticker": "6146.JP",
@@ -29,7 +32,10 @@
       "sl_pct": -1.8,
       "probability_pct": 57.3,
       "risk_reward": 2.16,
-      "friction_deducted_pct": 0.18
+      "friction_deducted_pct": 0.18,
+      "volatility": 0.052,
+      "turnover": 18000.0,
+      "is_hidden_gem": false
     },
     {
       "ticker": "9984.JP",
@@ -42,7 +48,10 @@
       "sl_pct": -1.62,
       "probability_pct": 57.9,
       "risk_reward": 2.07,
-      "friction_deducted_pct": 0.18
+      "friction_deducted_pct": 0.18,
+      "volatility": 0.045,
+      "turnover": 15000.0,
+      "is_hidden_gem": false
     },
     {
       "ticker": "7013.JP",
@@ -55,7 +64,10 @@
       "sl_pct": -1.55,
       "probability_pct": 58.1,
       "risk_reward": 2.01,
-      "friction_deducted_pct": 0.19
+      "friction_deducted_pct": 0.19,
+      "volatility": 0.043,
+      "turnover": 2900.0,
+      "is_hidden_gem": false
     },
     {
       "ticker": "4755.JP",
@@ -68,7 +80,10 @@
       "sl_pct": -1.51,
       "probability_pct": 58.1,
       "risk_reward": 1.97,
-      "friction_deducted_pct": 0.2
+      "friction_deducted_pct": 0.2,
+      "volatility": 0.042,
+      "turnover": 1600.0,
+      "is_hidden_gem": false
     },
     {
       "ticker": "8035.JP",
@@ -81,7 +96,10 @@
       "sl_pct": -1.48,
       "probability_pct": 58.2,
       "risk_reward": 2.0,
-      "friction_deducted_pct": 0.18
+      "friction_deducted_pct": 0.18,
+      "volatility": 0.041,
+      "turnover": 14000.0,
+      "is_hidden_gem": false
     },
     {
       "ticker": "7012.JP",
@@ -94,7 +112,10 @@
       "sl_pct": -1.48,
       "probability_pct": 58.2,
       "risk_reward": 1.97,
-      "friction_deducted_pct": 0.19
+      "friction_deducted_pct": 0.19,
+      "volatility": 0.041,
+      "turnover": 3100.0,
+      "is_hidden_gem": false
     },
     {
       "ticker": "7011.JP",
@@ -107,7 +128,10 @@
       "sl_pct": -1.37,
       "probability_pct": 58.5,
       "risk_reward": 1.94,
-      "friction_deducted_pct": 0.18
+      "friction_deducted_pct": 0.18,
+      "volatility": 0.038,
+      "turnover": 9800.0,
+      "is_hidden_gem": false
     },
     {
       "ticker": "9107.JP",
@@ -120,7 +144,10 @@
       "sl_pct": -1.3,
       "probability_pct": 58.6,
       "risk_reward": 1.87,
-      "friction_deducted_pct": 0.2
+      "friction_deducted_pct": 0.2,
+      "volatility": 0.036,
+      "turnover": 2200.0,
+      "is_hidden_gem": false
     },
     {
       "ticker": "8473.JP",
@@ -133,7 +160,10 @@
       "sl_pct": -1.26,
       "probability_pct": 58.7,
       "risk_reward": 1.86,
-      "friction_deducted_pct": 0.2
+      "friction_deducted_pct": 0.2,
+      "volatility": 0.035,
+      "turnover": 2300.0,
+      "is_hidden_gem": false
     }
   ],
   "hidden_gems_top10": [
@@ -148,7 +178,10 @@
       "sl_pct": -1.73,
       "probability_pct": 55.7,
       "risk_reward": 2.12,
-      "friction_deducted_pct": 0.28
+      "friction_deducted_pct": 0.28,
+      "volatility": 0.048,
+      "turnover": 550.0,
+      "is_hidden_gem": true
     },
     {
       "ticker": "6235.JP",
@@ -161,7 +194,10 @@
       "sl_pct": -1.51,
       "probability_pct": 56.1,
       "risk_reward": 1.94,
-      "friction_deducted_pct": 0.32
+      "friction_deducted_pct": 0.32,
+      "volatility": 0.042,
+      "turnover": 180.0,
+      "is_hidden_gem": true
     },
     {
       "ticker": "6266.JP",
@@ -174,7 +210,10 @@
       "sl_pct": -1.44,
       "probability_pct": 56.3,
       "risk_reward": 1.93,
-      "friction_deducted_pct": 0.3
+      "friction_deducted_pct": 0.3,
+      "volatility": 0.04,
+      "turnover": 290.0,
+      "is_hidden_gem": true
     },
     {
       "ticker": "2127.JP",
@@ -187,7 +226,10 @@
       "sl_pct": -1.4,
       "probability_pct": 56.4,
       "risk_reward": 1.94,
-      "friction_deducted_pct": 0.28
+      "friction_deducted_pct": 0.28,
+      "volatility": 0.039,
+      "turnover": 620.0,
+      "is_hidden_gem": true
     },
     {
       "ticker": "6707.JP",
@@ -200,7 +242,10 @@
       "sl_pct": -1.37,
       "probability_pct": 56.5,
       "risk_reward": 1.88,
-      "friction_deducted_pct": 0.31
+      "friction_deducted_pct": 0.31,
+      "volatility": 0.038,
+      "turnover": 250.0,
+      "is_hidden_gem": true
     },
     {
       "ticker": "7211.JP",
@@ -213,7 +258,10 @@
       "sl_pct": -1.37,
       "probability_pct": 56.5,
       "risk_reward": 1.95,
-      "friction_deducted_pct": 0.27
+      "friction_deducted_pct": 0.27,
+      "volatility": 0.038,
+      "turnover": 850.0,
+      "is_hidden_gem": true
     },
     {
       "ticker": "2413.JP",
@@ -226,7 +274,10 @@
       "sl_pct": -1.33,
       "probability_pct": 56.5,
       "risk_reward": 1.93,
-      "friction_deducted_pct": 0.27
+      "friction_deducted_pct": 0.27,
+      "volatility": 0.037,
+      "turnover": 1200.0,
+      "is_hidden_gem": true
     },
     {
       "ticker": "6890.JP",
@@ -239,7 +290,10 @@
       "sl_pct": -1.3,
       "probability_pct": 56.6,
       "risk_reward": 1.86,
-      "friction_deducted_pct": 0.29
+      "friction_deducted_pct": 0.29,
+      "volatility": 0.036,
+      "turnover": 410.0,
+      "is_hidden_gem": true
     },
     {
       "ticker": "4751.JP",
@@ -252,7 +306,10 @@
       "sl_pct": -1.3,
       "probability_pct": 56.6,
       "risk_reward": 1.91,
-      "friction_deducted_pct": 0.27
+      "friction_deducted_pct": 0.27,
+      "volatility": 0.036,
+      "turnover": 1100.0,
+      "is_hidden_gem": true
     },
     {
       "ticker": "4369.JP",
@@ -265,7 +322,10 @@
       "sl_pct": -1.26,
       "probability_pct": 56.7,
       "risk_reward": 1.8,
-      "friction_deducted_pct": 0.31
+      "friction_deducted_pct": 0.31,
+      "volatility": 0.035,
+      "turnover": 220.0,
+      "is_hidden_gem": true
     }
   ],
   "empirical_proof_metrics": {

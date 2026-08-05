@@ -151,12 +151,16 @@ def run_prediction_pipeline(date_target: str = "2026-08-05") -> Dict[str, Any]:
         for item in raw_top10:
             prices = jquants_client.fetch_daily_prices(item["ticker"].split(".")[0])
             c_price = float(prices[-1]["C"]) if prices else 2500.0
-            z3_res = solver.solve_boundary_jump(c_price, item["ticker"], item.get("volatility", 0.025), item.get("turnover", 500.0), item.get("is_hidden_gem", True))
+            vol = item.get("volatility", 0.025)
+            turn = item.get("turnover", 500.0)
+            gem = item.get("is_hidden_gem", False)
+            z3_res = solver.solve_boundary_jump(c_price, item["ticker"], vol, turn, gem)
             res.append({
                 "ticker": item["ticker"], "company_name": item["company_name"], "category_desc": item["category_desc"],
                 "entry_price": c_price, "take_profit": z3_res["take_profit_price"], "stop_loss": z3_res["stop_loss_price"],
                 "tp_pct": z3_res["tp_pct"], "sl_pct": z3_res["sl_pct"], "probability_pct": z3_res["logical_probability_pct"],
-                "risk_reward": z3_res["risk_reward_ratio"], "friction_deducted_pct": z3_res["friction_deducted_pct"]
+                "risk_reward": z3_res["risk_reward_ratio"], "friction_deducted_pct": z3_res["friction_deducted_pct"],
+                "volatility": vol, "turnover": turn, "is_hidden_gem": gem
             })
         return res
 
@@ -188,12 +192,16 @@ def run_prediction_pipeline(date_target: str = "2026-08-05") -> Dict[str, Any]:
         for item in raw_signals:
             ticker = item["ticker"]
             c_price = gap_map.get(ticker, round(item["entry_price"] * 1.015, 1))
-            z3_res = solver.solve_boundary_jump(c_price, ticker, item.get("volatility", 0.025) * 1.05, item.get("turnover", 500.0) * 1.10, item.get("is_hidden_gem", False))
+            vol = item.get("volatility", 0.025) * 1.05
+            turn = item.get("turnover", 500.0) * 1.10
+            gem = item.get("is_hidden_gem", False)
+            z3_res = solver.solve_boundary_jump(c_price, ticker, vol, turn, gem)
             res.append({
                 "ticker": ticker, "company_name": item["company_name"], "category_desc": item["category_desc"],
                 "entry_price": c_price, "take_profit": z3_res["take_profit_price"], "stop_loss": z3_res["stop_loss_price"],
                 "tp_pct": z3_res["tp_pct"], "sl_pct": z3_res["sl_pct"], "probability_pct": z3_res["logical_probability_pct"],
-                "risk_reward": z3_res["risk_reward_ratio"], "friction_deducted_pct": z3_res["friction_deducted_pct"]
+                "risk_reward": z3_res["risk_reward_ratio"], "friction_deducted_pct": z3_res["friction_deducted_pct"],
+                "volatility": vol, "turnover": turn, "is_hidden_gem": gem
             })
         return res
 
