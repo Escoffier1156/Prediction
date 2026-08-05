@@ -55,10 +55,13 @@ def generate_top20_pdf_report(json_path: str, pdf_out_path: str):
     cell_green = ParagraphStyle('CellGreen', parent=styles['Normal'], fontName=jp_font, fontSize=7.5, leading=9.5, textColor=colors.HexColor('#15803D'))
     cell_red = ParagraphStyle('CellRed', parent=styles['Normal'], fontName=jp_font, fontSize=7.5, leading=9.5, textColor=colors.HexColor('#B91C1C'))
 
+    doc_title_text = data.get("report_title", "日本株AI予測・08:30最終実行買付推奨レポート")
+    sub_title_text = data.get("report_subtitle", f"<b>対象日:</b> {date_target} 市場オープン (08:30 寄前気配反映 TOP 20 厳選データ)")
+
     story = []
-    story.append(Paragraph("日本株AI予測・08:30最終実行買付推奨レポート", title_style))
+    story.append(Paragraph(doc_title_text, title_style))
     story.append(Spacer(1, 2))
-    story.append(Paragraph(f"<b>対象日:</b> {date_target} 市場オープン (08:30 寄前気配反映 TOP 20 厳選データ)", subtitle_style))
+    story.append(Paragraph(sub_title_text, subtitle_style))
     story.append(Spacer(1, 4))
     story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor('#0284C7'), spaceBefore=2, spaceAfter=6))
 
@@ -202,7 +205,7 @@ def generate_top100_pdf_report(json_path: str, pdf_out_path: str):
 
 
 def generate_executive_png_images():
-    # 1. Generate Morning TOP 20 Execution PNG Image
+    # 1. Generate Morning TOP 20 Execution PNG Image (08:30)
     morning_json = "reports/tomorrow_dual_signals_20260805.json"
     temp_pdf_20 = "reports/temp_top20.pdf"
     out_png_20 = "reports/tomorrow_prediction_report_20260805.png"
@@ -220,7 +223,25 @@ def generate_executive_png_images():
         if os.path.exists(temp_pdf_20):
             os.remove(temp_pdf_20)
 
-    # 2. Generate Night TOP 100 Candidate PNG Images (Page 1 & Page 2)
+    # 2. Generate Intraday 09:30 Execution PNG Image
+    intraday_json = "reports/intraday_0930_signals_20260805.json"
+    temp_pdf_0930 = "reports/temp_top20_0930.pdf"
+    out_png_0930 = "reports/intraday_0930_prediction_report_20260805.png"
+
+    if os.path.exists(intraday_json):
+        generate_top20_pdf_report(intraday_json, temp_pdf_0930)
+        prefix0930 = "reports/temp_png_0930"
+        subprocess.run(f"pdftoppm -png -r 200 {temp_pdf_0930} {prefix0930}", shell=True, capture_output=True)
+        r_png_0930 = f"{prefix0930}-1.png"
+        if os.path.exists(r_png_0930):
+            if os.path.exists(out_png_0930):
+                os.remove(out_png_0930)
+            os.rename(r_png_0930, out_png_0930)
+            print(f"✔ Intraday 09:30 Execution PNG Created: {out_png_0930}")
+        if os.path.exists(temp_pdf_0930):
+            os.remove(temp_pdf_0930)
+
+    # 3. Generate Night TOP 100 Candidate PNG Images (Page 1 & Page 2)
     night_json = "reports/tomorrow_top100_earnings_signals_20260805.json"
     temp_pdf_100 = "reports/temp_top100.pdf"
     out_p1 = "reports/tomorrow_prediction_report_20260805_page1.png"
