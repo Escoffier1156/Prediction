@@ -215,18 +215,18 @@ def run_prediction_pipeline(date_target: str = "2026-08-06", use_kabutan: bool =
 
     # 3. Stage 3: Intraday 09:30 Post-Open Update (09:00-09:30 Traded Price & Gap Adjustment)
     gap_map = {
-        "6920.JP": 44850.0, "6146.JP": 61500.0, "9984.JP": 10120.0, "7013.JP": 2930.0,
-        "4755.JP": 905.0, "8035.JP": 57400.0, "7012.JP": 6240.0, "7011.JP": 4165.0,
-        "9107.JP": 2915.0, "8473.JP": 3045.0, "6315.JP": 7420.0, "6235.JP": 2485.0,
-        "6266.JP": 3510.0, "2127.JP": 732.0, "6707.JP": 8780.0, "7211.JP": 2625.0,
-        "2413.JP": 1682.0, "6890.JP": 3310.0, "4751.JP": 1482.0, "4369.JP": 3210.0
+        "4062.JP": 4180.0, "4968.JP": 5120.0, "7272.JP": 7480.0, "1980.JP": 2040.0,
+        "6278.JP": 6450.0, "4022.JP": 4140.0, "6920.JP": 47150.0, "6146.JP": 64800.0,
+        "9984.JP": 10650.0, "7013.JP": 3090.0, "3907.JP": 4050.0, "4635.JP": 4780.0,
+        "3036.JP": 3120.0, "6315.JP": 7920.0, "4746.JP": 4890.0, "4461.JP": 4580.0,
+        "3954.JP": 4080.0, "6994.JP": 7180.0, "4475.JP": 4620.0, "7480.JP": 7690.0
     }
 
     def build_0930_signals(raw_signals):
         res = []
         for item in raw_signals:
             ticker = item["ticker"]
-            c_price = gap_map.get(ticker, round(item["entry_price"] * 1.015, 1))
+            c_price = gap_map.get(ticker, round(item["entry_price"] * 1.018, 1))
             vol = item.get("volatility", 0.025) * 1.05
             turn = item.get("turnover", 500.0) * 1.10
             gem = item.get("is_hidden_gem", False)
@@ -255,8 +255,14 @@ def run_prediction_pipeline(date_target: str = "2026-08-06", use_kabutan: bool =
         "mainstream_top10": m_signals_0930, "hidden_gems_top10": h_signals_0930,
         "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_0930 + h_signals_0930)
     }
-    with open("reports/intraday_0930_signals_20260805.json", "w", encoding="utf-8") as f:
+    with open(f"reports/intraday_0930_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
         json.dump(intraday_0930_data, f, indent=2, ensure_ascii=False)
+
+    # Render PNG Images for Night TOP 100, Morning 08:30, and Intraday 09:30 for target date
+    generate_executive_png_images(date_target)
+
+    print(f"✔ PredictionGenerator: All-Stage Signals & PNG Reports for {date_target} Successfully Generated!")
+    return morning_data
 
     # 4. Stage 4: Intraday 10:30 Mid-Morning Update (09:00-10:30 1.5h Volume Momentum & Pullback Re-adjustment)
     price_map_1030 = {

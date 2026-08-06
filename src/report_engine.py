@@ -244,18 +244,26 @@ def generate_executive_png_images(date_str: str = "2026-08-06"):
                 os.remove(out_png_20)
             os.rename(r_png, out_png_20)
             print(f"✔ Morning TOP 20 Execution PNG Created: {out_png_20}")
-        if os.path.exists(temp_pdf_20):
-            os.remove(temp_pdf_20)
-        if os.path.exists(p1):
-            shutil.copy(p1, out_p1)
-            print(f"✔ Night TOP 100 Page 1 PNG Created: {out_p1}")
-        if os.path.exists(p2):
-            shutil.copy(p2, out_p2)
-            print(f"✔ Night TOP 100 Page 2 PNG Created: {out_p2}")
+    # 3. Generate Intraday 09:30 Execution PNG Image
+    intraday_json = f"reports/intraday_0930_signals_{date_str.replace('-', '')}.json"
+    if not os.path.exists(intraday_json):
+        intraday_json = "reports/intraday_0930_signals_20260805.json"
 
-        for p in [p1, p2, temp_pdf_100]:
-            if os.path.exists(p):
-                os.remove(p)
+    temp_pdf_0930 = "reports/temp_top20_0930.pdf"
+    out_png_0930 = f"reports/intraday_0930_prediction_report_{date_str.replace('-', '')}.png"
+
+    if os.path.exists(intraday_json):
+        generate_top20_pdf_report(intraday_json, temp_pdf_0930)
+        prefix0930 = "reports/temp_png_0930"
+        subprocess.run(f"pdftoppm -png -r 200 {temp_pdf_0930} {prefix0930}", shell=True, capture_output=True)
+        r_png_0930 = f"{prefix0930}-1.png"
+        if os.path.exists(r_png_0930):
+            if os.path.exists(out_png_0930):
+                os.remove(out_png_0930)
+            os.rename(r_png_0930, out_png_0930)
+            print(f"✔ Intraday 09:30 Execution PNG Created: {out_png_0930}")
+        if os.path.exists(temp_pdf_0930):
+            os.remove(temp_pdf_0930)
 
 
 if __name__ == "__main__":
