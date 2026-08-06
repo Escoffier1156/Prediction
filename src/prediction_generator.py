@@ -24,17 +24,23 @@ from report_engine import generate_executive_png_images
 from kabutan_scraper import KabutanScraper
 
 
-def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True) -> Dict[str, Any]:
+def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, include_intraday: bool = None) -> Dict[str, Any]:
+    today_str = datetime.date.today().strftime("%Y-%m-%d")
     if not date_target:
-        date_target = datetime.date.today().strftime("%Y-%m-%d")
+        date_target = today_str
+
+    if include_intraday is None:
+        # Default: generate intraday stages for today, but skip future intraday predictions until that day arrives
+        include_intraday = (date_target <= today_str)
 
     print("======================================================================")
-    print(f" 🚀 GENERATING NO-CODE PREDICTION PIPELINE ({date_target}) [Kabutan: {use_kabutan}]")
+    print(f" 🚀 GENERATING NO-CODE PREDICTION PIPELINE ({date_target}) [Kabutan: {use_kabutan}, Intraday: {include_intraday}]")
     print("    Stage 1: Night 19:00 Candidate Screening TOP 100 List")
     print("    Stage 2: Morning 08:30 Final Execution TOP 20 Card")
-    print("    Stage 3: Intraday 09:30 Post-Open Update TOP 20 Card")
-    print("    Stage 4: Intraday 10:30 Mid-Morning Trend TOP 20 Card")
-    print("    Stage 5: Intraday 12:30 Post-Lunch Open TOP 20 Card")
+    if include_intraday:
+        print("    Stage 3: Intraday 09:30 Post-Open Update TOP 20 Card")
+        print("    Stage 4: Intraday 10:30 Mid-Morning Trend TOP 20 Card")
+        print("    Stage 5: Intraday 13:00 Post-Lunch Open TOP 20 Card")
     print("======================================================================")
 
     jquants_client = JQuantsAPIClient()

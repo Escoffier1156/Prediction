@@ -22,8 +22,8 @@
       "original_code": "    def build_top10_list(raw_top10):\n        res = []\n        for item in raw_top10:\n            ticker = item[\"ticker\"]\n            c_price = live_price_map.get(ticker, item.get(\"entry_price\", 2500.0))\n            if c_price == 2500.0:\n                prices = jquants_client.fetch_daily_prices(ticker.split(\".\")[0])\n                c_price = float(prices[-1][\"C\"]) if prices else 2500.0\n            vol = item.get(\"volatility\", 0.025)\n            turn = item.get(\"turnover\", 500.0)\n            gem = item.get(\"is_hidden_gem\", False)\n            z3_res = solver.solve_boundary_jump(c_price, ticker, vol, turn, gem)\n            res.append({\n                \"ticker\": ticker, \"company_name\": item[\"company_name\"], \"category_desc\": item[\"category_desc\"],\n                \"entry_price\": c_price, \"take_profit\": z3_res[\"take_profit_price\"], \"stop_loss\": z3_res[\"stop_loss_price\"],\n                \"tp_pct\": z3_res[\"tp_pct\"], \"sl_pct\": z3_res[\"sl_pct\"], \"probability_pct\": z3_res[\"logical_probability_pct\"],\n                \"risk_reward\": z3_res[\"risk_reward_ratio\"], \"friction_deducted_pct\": z3_res[\"friction_deducted_pct\"],\n                \"volatility\": vol, \"turnover\": turn, \"is_hidden_gem\": gem\n            })\n        return res",
       "cached_counterexamples": [],
       "target_symbol": "build_top10_list",
-      "start_line": 190,
-      "end_line": 211
+      "start_line": 196,
+      "end_line": 217
     },
     "src/quant_solver.py#lock_0": {
       "file_path": "src/quant_solver.py",
