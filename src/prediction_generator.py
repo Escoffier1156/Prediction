@@ -178,6 +178,7 @@ def run_prediction_pipeline(date_target: str = "2026-08-06", use_kabutan: bool =
     m_top10 = [x for x in morning_20 if not x.get("is_hidden_gem", False)][:10]
     h_top10 = [x for x in morning_20 if x.get("is_hidden_gem", False)][:10]
 
+    # [LOCK: ast]
     def build_top10_list(raw_top10):
         res = []
         for item in raw_top10:
@@ -198,6 +199,7 @@ def run_prediction_pipeline(date_target: str = "2026-08-06", use_kabutan: bool =
                 "volatility": vol, "turnover": turn, "is_hidden_gem": gem
             })
         return res
+    # [/LOCK]
 
     m_signals = build_top10_list(m_top10 if len(m_top10) == 10 else top100_processed[:10])
     h_signals = build_top10_list(h_top10 if len(h_top10) == 10 else top100_processed[10:20])

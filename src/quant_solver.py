@@ -18,6 +18,7 @@ class Z3JumpSolver:
         self.base_commission = 0.0010  # 0.10% broker fee
         self.max_allowed_sl_pct = 1.80  # Strict SL cap < 2.0%
 
+    # [LOCK: logic]
     def solve_boundary_jump(
         self,
         current_price: float,
@@ -97,6 +98,7 @@ class Z3JumpSolver:
             "slippage_pct": round(slippage_penalty * 100.0, 2),
             "kelly_position_size_pct": round(kelly_fraction * 100.0, 2)
         }
+    # [/LOCK]
 
 
 class PyMCAggregator:

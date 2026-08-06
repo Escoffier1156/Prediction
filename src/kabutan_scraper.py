@@ -15,6 +15,7 @@ class KabutanScraper:
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         }
 
+    # [LOCK: logic]
     def fetch_warning_universe(self, mode: str = "2_1") -> List[Dict[str, Any]]:
         """
         Fetches stock universe directly from Kabutan (株探) warning/ranking page.
@@ -87,6 +88,7 @@ class KabutanScraper:
 
         print(f"✔ Successfully scraped {len(stocks)} live stock alerts from Kabutan ({url})!")
         return stocks
+    # [/LOCK]
 
 
 if __name__ == "__main__":
