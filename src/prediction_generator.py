@@ -163,14 +163,16 @@ def run_prediction_pipeline(date_target: str = "2026-08-06", use_kabutan: bool =
     for idx, item in enumerate(top100_processed, start=1):
         item["rank"] = idx
 
+    date_dir = f"reports/{date_target}"
+    os.makedirs(date_dir, exist_ok=True)
     file_suffix = date_target.replace('-', '')
+
     night_data = {
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         "stage": "Stage 1 (Night 19:00 Candidate Screening TOP 100)", "top100_signals": top100_processed,
         "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(top100_processed)
     }
-    os.makedirs("reports", exist_ok=True)
-    with open(f"reports/tomorrow_top100_earnings_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
+    with open(f"{date_dir}/tomorrow_top100_earnings_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
         json.dump(night_data, f, indent=2, ensure_ascii=False)
 
     # 2. Stage 2: Morning 08:30 Execution TOP 20 (Mainstream 10 & Hidden 10)
@@ -212,7 +214,7 @@ def run_prediction_pipeline(date_target: str = "2026-08-06", use_kabutan: bool =
         "mainstream_top10": m_signals, "hidden_gems_top10": h_signals,
         "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals + h_signals)
     }
-    with open(f"reports/tomorrow_dual_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
+    with open(f"{date_dir}/tomorrow_dual_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
         json.dump(morning_data, f, indent=2, ensure_ascii=False)
 
     # 3. Stage 3: Intraday 09:30 Post-Open Update (09:00-09:30 Traded Price & Gap Adjustment)
@@ -257,7 +259,7 @@ def run_prediction_pipeline(date_target: str = "2026-08-06", use_kabutan: bool =
         "mainstream_top10": m_signals_0930, "hidden_gems_top10": h_signals_0930,
         "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_0930 + h_signals_0930)
     }
-    with open(f"reports/intraday_0930_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
+    with open(f"{date_dir}/intraday_0930_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
         json.dump(intraday_0930_data, f, indent=2, ensure_ascii=False)
 
     # Render PNG Images for Night TOP 100, Morning 08:30, and Intraday 09:30 for target date

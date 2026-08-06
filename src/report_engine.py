@@ -205,18 +205,22 @@ def generate_top100_pdf_report(json_path: str, pdf_out_path: str):
 
 
 def generate_executive_png_images(date_str: str = "2026-08-06"):
-    # 1. Generate Night TOP 100 Candidate PNG Images for target date (Page 1 & Page 2)
-    night_json = f"reports/tomorrow_top100_earnings_signals_{date_str.replace('-', '')}.json"
-    if not os.path.exists(night_json):
-        night_json = "reports/tomorrow_top100_earnings_signals_20260805.json"
+    date_dir = f"reports/{date_str}"
+    os.makedirs(date_dir, exist_ok=True)
+    file_suffix = date_str.replace('-', '')
 
-    temp_pdf_100 = "reports/temp_top100.pdf"
-    out_p1 = f"reports/tomorrow_prediction_report_{date_str.replace('-', '')}_page1.png"
-    out_p2 = f"reports/tomorrow_prediction_report_{date_str.replace('-', '')}_page2.png"
+    # 1. Generate Night TOP 100 Candidate PNG Images for target date (Page 1 & Page 2)
+    night_json = f"{date_dir}/tomorrow_top100_earnings_signals_{file_suffix}.json"
+    if not os.path.exists(night_json):
+        night_json = f"reports/tomorrow_top100_earnings_signals_{file_suffix}.json"
+
+    temp_pdf_100 = f"{date_dir}/temp_top100.pdf"
+    out_p1 = f"{date_dir}/tomorrow_prediction_report_{file_suffix}_page1.png"
+    out_p2 = f"{date_dir}/tomorrow_prediction_report_{file_suffix}_page2.png"
 
     if os.path.exists(night_json):
         generate_top100_pdf_report(night_json, temp_pdf_100)
-        prefix100 = "reports/temp_png_top100"
+        prefix100 = f"{date_dir}/temp_png_top100"
         subprocess.run(f"pdftoppm -png -r 200 {temp_pdf_100} {prefix100}", shell=True, capture_output=True)
         p1 = f"{prefix100}-1.png"
         p2 = f"{prefix100}-2.png"
@@ -230,13 +234,16 @@ def generate_executive_png_images(date_str: str = "2026-08-06"):
             os.remove(temp_pdf_100)
 
     # 2. Generate Morning TOP 20 Execution PNG Image
-    morning_json = f"reports/tomorrow_dual_signals_{date_str.replace('-', '')}.json"
-    temp_pdf_20 = "reports/temp_top20.pdf"
-    out_png_20 = f"reports/tomorrow_prediction_report_{date_str.replace('-', '')}.png"
+    morning_json = f"{date_dir}/tomorrow_dual_signals_{file_suffix}.json"
+    if not os.path.exists(morning_json):
+        morning_json = f"reports/tomorrow_dual_signals_{file_suffix}.json"
+
+    temp_pdf_20 = f"{date_dir}/temp_top20.pdf"
+    out_png_20 = f"{date_dir}/tomorrow_prediction_report_{file_suffix}.png"
 
     if os.path.exists(morning_json):
         generate_top20_pdf_report(morning_json, temp_pdf_20)
-        prefix = "reports/temp_png_top20"
+        prefix = f"{date_dir}/temp_png_top20"
         subprocess.run(f"pdftoppm -png -r 200 {temp_pdf_20} {prefix}", shell=True, capture_output=True)
         r_png = f"{prefix}-1.png"
         if os.path.exists(r_png):
@@ -244,17 +251,20 @@ def generate_executive_png_images(date_str: str = "2026-08-06"):
                 os.remove(out_png_20)
             os.rename(r_png, out_png_20)
             print(f"✔ Morning TOP 20 Execution PNG Created: {out_png_20}")
-    # 3. Generate Intraday 09:30 Execution PNG Image
-    intraday_json = f"reports/intraday_0930_signals_{date_str.replace('-', '')}.json"
-    if not os.path.exists(intraday_json):
-        intraday_json = "reports/intraday_0930_signals_20260805.json"
+        if os.path.exists(temp_pdf_20):
+            os.remove(temp_pdf_20)
 
-    temp_pdf_0930 = "reports/temp_top20_0930.pdf"
-    out_png_0930 = f"reports/intraday_0930_prediction_report_{date_str.replace('-', '')}.png"
+    # 3. Generate Intraday 09:30 Execution PNG Image
+    intraday_json = f"{date_dir}/intraday_0930_signals_{file_suffix}.json"
+    if not os.path.exists(intraday_json):
+        intraday_json = f"reports/intraday_0930_signals_{file_suffix}.json"
+
+    temp_pdf_0930 = f"{date_dir}/temp_top20_0930.pdf"
+    out_png_0930 = f"{date_dir}/intraday_0930_prediction_report_{file_suffix}.png"
 
     if os.path.exists(intraday_json):
         generate_top20_pdf_report(intraday_json, temp_pdf_0930)
-        prefix0930 = "reports/temp_png_0930"
+        prefix0930 = f"{date_dir}/temp_png_0930"
         subprocess.run(f"pdftoppm -png -r 200 {temp_pdf_0930} {prefix0930}", shell=True, capture_output=True)
         r_png_0930 = f"{prefix0930}-1.png"
         if os.path.exists(r_png_0930):
