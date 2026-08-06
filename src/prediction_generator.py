@@ -281,22 +281,22 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True) -
     with open(f"{date_dir}/intraday_1030_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
         json.dump(intraday_1030_data, f, indent=2, ensure_ascii=False)
 
-    # 5. Stage 5: Intraday 12:30 Post-Lunch Update
-    m_signals_1230 = build_intraday_signals(m_signals, 0.032)
-    h_signals_1230 = build_intraday_signals(h_signals, 0.032)
-    m_signals_1230.sort(key=lambda x: (x["probability_pct"], x["risk_reward"]), reverse=True)
-    h_signals_1230.sort(key=lambda x: (x["probability_pct"], x["risk_reward"]), reverse=True)
+    # 5. Stage 5: Intraday 13:00 Post-Lunch Update
+    m_signals_1300 = build_intraday_signals(m_signals, 0.035)
+    h_signals_1300 = build_intraday_signals(h_signals, 0.035)
+    m_signals_1300.sort(key=lambda x: (x["probability_pct"], x["risk_reward"]), reverse=True)
+    h_signals_1300.sort(key=lambda x: (x["probability_pct"], x["risk_reward"]), reverse=True)
 
-    intraday_1230_data = {
+    intraday_1300_data = {
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "stage": "Stage 5 (Intraday 12:30 Post-Lunch Update TOP 20)",
-        "report_title": "日本株AI予測・12:30場中更新発注推奨レポート",
-        "report_subtitle": f"<b>対象日:</b> {date_target} ザラ場後場 (12:30 昼休みニュース・後場寄り気配反映 TOP 20)",
-        "mainstream_top10": m_signals_1230, "hidden_gems_top10": h_signals_1230,
-        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_1230 + h_signals_1230)
+        "stage": "Stage 5 (Intraday 13:00 Post-Lunch Update TOP 20)",
+        "report_title": "日本株AI予測・13:00場中更新発注推奨レポート",
+        "report_subtitle": f"<b>対象日:</b> {date_target} ザラ場後場 (13:00 後場寄り後30分実価格反映 TOP 20)",
+        "mainstream_top10": m_signals_1300, "hidden_gems_top10": h_signals_1300,
+        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_1300 + h_signals_1300)
     }
-    with open(f"{date_dir}/intraday_1230_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
-        json.dump(intraday_1230_data, f, indent=2, ensure_ascii=False)
+    with open(f"{date_dir}/intraday_1300_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
+        json.dump(intraday_1300_data, f, indent=2, ensure_ascii=False)
 
     # Render PNG Images for all stages dynamically
     generate_executive_png_images(date_target)

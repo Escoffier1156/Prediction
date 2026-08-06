@@ -290,23 +290,23 @@ def generate_executive_png_images(date_str: str = "2026-08-06"):
         if os.path.exists(temp_pdf_1030):
             os.remove(temp_pdf_1030)
 
-    # 5. Generate Intraday 12:30 Execution PNG Image
-    intraday_1230_json = f"{date_dir}/intraday_1230_signals_{file_suffix}.json"
-    temp_pdf_1230 = f"{date_dir}/temp_top20_1230.pdf"
-    out_png_1230 = f"{date_dir}/intraday_1230_prediction_report_{file_suffix}.png"
+    # 5. Generate Intraday 13:00 Execution PNG Image
+    intraday_1300_json = f"{date_dir}/intraday_1300_signals_{file_suffix}.json"
+    temp_pdf_1300 = f"{date_dir}/temp_top20_1300.pdf"
+    out_png_1300 = f"{date_dir}/intraday_1300_prediction_report_{file_suffix}.png"
 
-    if os.path.exists(intraday_1230_json):
-        generate_top20_pdf_report(intraday_1230_json, temp_pdf_1230)
-        prefix1230 = f"{date_dir}/temp_png_1230"
-        subprocess.run(f"pdftoppm -png -r 200 {temp_pdf_1230} {prefix1230}", shell=True, capture_output=True)
-        r_png_1230 = f"{prefix1230}-1.png"
-        if os.path.exists(r_png_1230):
-            if os.path.exists(out_png_1230):
-                os.remove(out_png_1230)
-            os.rename(r_png_1230, out_png_1230)
-            print(f"✔ Intraday 12:30 Execution PNG Created: {out_png_1230}")
-        if os.path.exists(temp_pdf_1230):
-            os.remove(temp_pdf_1230)
+    if os.path.exists(intraday_1300_json):
+        generate_top20_pdf_report(intraday_1300_json, temp_pdf_1300)
+        prefix1300 = f"{date_dir}/temp_png_1300"
+        subprocess.run(f"pdftoppm -png -r 200 {temp_pdf_1300} {prefix1300}", shell=True, capture_output=True)
+        r_png_1300 = f"{prefix1300}-1.png"
+        if os.path.exists(r_png_1300):
+            if os.path.exists(out_png_1300):
+                os.remove(out_png_1300)
+            os.rename(r_png_1300, out_png_1300)
+            print(f"✔ Intraday 13:00 Execution PNG Created: {out_png_1300}")
+        if os.path.exists(temp_pdf_1300):
+            os.remove(temp_pdf_1300)
 
 
 if __name__ == "__main__":
