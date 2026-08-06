@@ -1,6 +1,6 @@
 {
   "prediction_date": "2026-08-06",
-  "generated_at": "2026-08-06 10:11:35",
+  "generated_at": "2026-08-06 10:30:19",
   "stage": "Stage 1 (Night 19:00 Candidate Screening TOP 100)",
   "top100_signals": [
     {
@@ -415,7 +415,7 @@
       "rank": 25,
       "ticker": "4471.JP",
       "company_name": "三洋化",
-      "category_desc": "株探急上昇【東証プライム】前日比+14.67%",
+      "category_desc": "株探急上昇【東証プライム】前日比+14.09%",
       "entry_price": 4471.0,
       "take_profit": 4637.6,
       "stop_loss": 4376.5,
@@ -425,7 +425,7 @@
       "risk_reward": 1.76,
       "friction_deducted_pct": 0.34,
       "volatility": 0.068,
-      "turnover": 966.6,
+      "turnover": 1231.8,
       "is_hidden_gem": true
     },
     {
@@ -449,7 +449,7 @@
       "rank": 27,
       "ticker": "5301.JP",
       "company_name": "東海カーボン",
-      "category_desc": "株探急上昇【東証プライム】前日比+13.63%",
+      "category_desc": "株探急上昇【東証プライム】前日比+12.15%",
       "entry_price": 5301.0,
       "take_profit": 5478.2,
       "stop_loss": 5195.7,
@@ -459,7 +459,7 @@
       "risk_reward": 1.68,
       "friction_deducted_pct": 0.21,
       "volatility": 0.068,
-      "turnover": 21567.1,
+      "turnover": 23452.7,
       "is_hidden_gem": false
     },
     {
@@ -532,23 +532,6 @@
     },
     {
       "rank": 32,
-      "ticker": "9619.JP",
-      "company_name": "イチネンＨＤ",
-      "category_desc": "株探急上昇【東証プライム】前日比+8.55%",
-      "entry_price": 9619.0,
-      "take_profit": 9975.6,
-      "stop_loss": 9417.5,
-      "tp_pct": 4.04,
-      "sl_pct": -1.78,
-      "probability_pct": 58.8,
-      "risk_reward": 1.77,
-      "friction_deducted_pct": 0.32,
-      "volatility": 0.0592,
-      "turnover": 678.1,
-      "is_hidden_gem": true
-    },
-    {
-      "rank": 33,
       "ticker": "1099.JP",
       "company_name": "東証決算銘柄_1099",
       "category_desc": "直近決算好業績",
@@ -565,7 +548,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 34,
+      "rank": 33,
       "ticker": "7532.JP",
       "company_name": "パン・パシフィックHD",
       "category_desc": "ドンキ・インバウンド爆発",
@@ -582,7 +565,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 35,
+      "rank": 34,
       "ticker": "7013.JP",
       "company_name": "IHI",
       "category_desc": "防衛・航空エンジン民間需要",
@@ -599,7 +582,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 36,
+      "rank": 35,
       "ticker": "1082.JP",
       "company_name": "東証決算銘柄_1082",
       "category_desc": "直近決算好業績",
@@ -616,24 +599,24 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 37,
+      "rank": 36,
       "ticker": "4813.JP",
       "company_name": "ＡＣＣＥＳＳ",
-      "category_desc": "株探急上昇【東証プライム】前日比+12.97%",
+      "category_desc": "株探急上昇【東証プライム】前日比+12.43%",
       "entry_price": 4813.0,
-      "take_profit": 4990.6,
-      "stop_loss": 4715.5,
+      "take_profit": 4991.1,
+      "stop_loss": 4716.0,
       "tp_pct": 3.95,
       "sl_pct": -1.78,
       "probability_pct": 58.3,
-      "risk_reward": 1.82,
-      "friction_deducted_pct": 0.25,
+      "risk_reward": 1.84,
+      "friction_deducted_pct": 0.24,
       "volatility": 0.068,
-      "turnover": 8843.4,
+      "turnover": 9798.8,
       "is_hidden_gem": false
     },
     {
-      "rank": 38,
+      "rank": 37,
       "ticker": "2127.JP",
       "company_name": "日本M&AセンターHD",
       "category_desc": "事業承継M&A・成約数V字",
@@ -650,7 +633,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 39,
+      "rank": 38,
       "ticker": "1096.JP",
       "company_name": "東証決算銘柄_1096",
       "category_desc": "直近決算好業績",
@@ -667,7 +650,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 40,
+      "rank": 39,
       "ticker": "1097.JP",
       "company_name": "東証決算銘柄_1097",
       "category_desc": "直近決算好業績",
@@ -684,7 +667,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 41,
+      "rank": 40,
       "ticker": "9101.JP",
       "company_name": "日本郵船",
       "category_desc": "海運・コンテナ運賃復調",
@@ -701,7 +684,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 42,
+      "rank": 41,
       "ticker": "9104.JP",
       "company_name": "商船三井",
       "category_desc": "LNG船・自動車船好調",
@@ -718,7 +701,7 @@
       "is_hidden_gem": false
     },
     {
-      "rank": 43,
+      "rank": 42,
       "ticker": "8316.JP",
       "company_name": "三井住友フィナンシャルG",
       "category_desc": "銀行・増配自社株買い",
@@ -735,7 +718,7 @@
       "is_hidden_gem": true
     },
     {
-      "rank": 44,
+      "rank": 43,
       "ticker": "7709.JP",
       "company_name": "クボテック",
       "category_desc": "株探急上昇【東証スタンダード】前日比+20.51%",
@@ -748,14 +731,31 @@
       "risk_reward": 1.92,
       "friction_deducted_pct": 0.25,
       "volatility": 0.068,
-      "turnover": 9701.8,
+      "turnover": 9956.9,
+      "is_hidden_gem": true
+    },
+    {
+      "rank": 44,
+      "ticker": "5103.JP",
+      "company_name": "昭和ＨＤ",
+      "category_desc": "株探急上昇【東証スタンダード】前日比+14.29%",
+      "entry_price": 5103.0,
+      "take_profit": 5274.5,
+      "stop_loss": 5008.3,
+      "tp_pct": 3.64,
+      "sl_pct": -1.59,
+      "probability_pct": 57.9,
+      "risk_reward": 1.81,
+      "friction_deducted_pct": 0.27,
+      "volatility": 0.068,
+      "turnover": 4053.8,
       "is_hidden_gem": true
     },
     {
       "rank": 45,
       "ticker": "2801.JP",
       "company_name": "キッコマン",
-      "category_desc": "株探急上昇【東証プライム】前日比+11.48%",
+      "category_desc": "株探急上昇【東証プライム】前日比+11.92%",
       "entry_price": 2801.0,
       "take_profit": 2891.2,
       "stop_loss": 2748.2,
@@ -765,7 +765,7 @@
       "risk_reward": 1.71,
       "friction_deducted_pct": 0.25,
       "volatility": 0.068,
-      "turnover": 9175.5,
+      "turnover": 11816.3,
       "is_hidden_gem": false
     },
     {
@@ -804,9 +804,26 @@
     },
     {
       "rank": 48,
+      "ticker": "5480.JP",
+      "company_name": "冶金工",
+      "category_desc": "株探急上昇【東証プライム】前日比+13.14%",
+      "entry_price": 5480.0,
+      "take_profit": 5659.3,
+      "stop_loss": 5371.7,
+      "tp_pct": 3.53,
+      "sl_pct": -1.73,
+      "probability_pct": 57.9,
+      "risk_reward": 1.66,
+      "friction_deducted_pct": 0.25,
+      "volatility": 0.068,
+      "turnover": 1373.8,
+      "is_hidden_gem": true
+    },
+    {
+      "rank": 49,
       "ticker": "4483.JP",
       "company_name": "ＪＭＤＣ",
-      "category_desc": "株探急上昇【東証プライム】前日比+10.42%",
+      "category_desc": "株探急上昇【東証プライム】前日比+11.4%",
       "entry_price": 4483.0,
       "take_profit": 4615.8,
       "stop_loss": 4402.5,
@@ -815,26 +832,9 @@
       "probability_pct": 57.9,
       "risk_reward": 1.65,
       "friction_deducted_pct": 0.26,
-      "volatility": 0.0667,
-      "turnover": 1952.3,
-      "is_hidden_gem": false
-    },
-    {
-      "rank": 49,
-      "ticker": "5480.JP",
-      "company_name": "冶金工",
-      "category_desc": "株探急上昇【東証プライム】前日比+13.54%",
-      "entry_price": 5480.0,
-      "take_profit": 5658.7,
-      "stop_loss": 5371.2,
-      "tp_pct": 3.53,
-      "sl_pct": -1.73,
-      "probability_pct": 57.9,
-      "risk_reward": 1.64,
-      "friction_deducted_pct": 0.26,
       "volatility": 0.068,
-      "turnover": 969.4,
-      "is_hidden_gem": true
+      "turnover": 2157.2,
+      "is_hidden_gem": false
     },
     {
       "rank": 50,
@@ -942,7 +942,7 @@
       "rank": 56,
       "ticker": "2269.JP",
       "company_name": "明治ＨＤ",
-      "category_desc": "株探急上昇【東証プライム】前日比+10.08%",
+      "category_desc": "株探急上昇【東証プライム】前日比+10.19%",
       "entry_price": 2269.0,
       "take_profit": 2336.4,
       "stop_loss": 2226.4,
@@ -951,8 +951,8 @@
       "probability_pct": 57.5,
       "risk_reward": 1.58,
       "friction_deducted_pct": 0.27,
-      "volatility": 0.0653,
-      "turnover": 2328.4,
+      "volatility": 0.0658,
+      "turnover": 2588.2,
       "is_hidden_gem": false
     },
     {
@@ -1197,7 +1197,7 @@
       "rank": 71,
       "ticker": "4635.JP",
       "company_name": "東インキ",
-      "category_desc": "株探急上昇【東証スタンダード】前日比+20.68%",
+      "category_desc": "株探急上昇【東証スタンダード】前日比+20.92%",
       "entry_price": 4635.0,
       "take_profit": 4809.2,
       "stop_loss": 4538.4,
@@ -1207,7 +1207,7 @@
       "risk_reward": 1.8,
       "friction_deducted_pct": 0.31,
       "volatility": 0.068,
-      "turnover": 1478.6,
+      "turnover": 1629.2,
       "is_hidden_gem": true
     },
     {
@@ -1231,7 +1231,7 @@
       "rank": 73,
       "ticker": "4452.JP",
       "company_name": "花王",
-      "category_desc": "株探急上昇【東証プライム】前日比+10.45%",
+      "category_desc": "株探急上昇【東証プライム】前日比+11.23%",
       "entry_price": 4452.0,
       "take_profit": 4625.3,
       "stop_loss": 4364.9,
@@ -1240,8 +1240,8 @@
       "probability_pct": 56.7,
       "risk_reward": 1.99,
       "friction_deducted_pct": 0.18,
-      "volatility": 0.0668,
-      "turnover": 20098.6,
+      "volatility": 0.068,
+      "turnover": 23219.9,
       "is_hidden_gem": false
     },
     {
@@ -1639,17 +1639,17 @@
       "rank": 97,
       "ticker": "6645.JP",
       "company_name": "オムロン",
-      "category_desc": "株探急上昇【東証プライム】前日比+13.18%",
+      "category_desc": "株探急上昇【東証プライム】前日比+14.57%",
       "entry_price": 6645.0,
-      "take_profit": 6890.3,
-      "stop_loss": 6512.4,
+      "take_profit": 6891.0,
+      "stop_loss": 6513.0,
       "tp_pct": 3.92,
       "sl_pct": -1.78,
       "probability_pct": 54.8,
-      "risk_reward": 1.85,
-      "friction_deducted_pct": 0.22,
+      "risk_reward": 1.86,
+      "friction_deducted_pct": 0.21,
       "volatility": 0.068,
-      "turnover": 17087.0,
+      "turnover": 20074.5,
       "is_hidden_gem": false
     },
     {
@@ -1673,7 +1673,7 @@
       "rank": 99,
       "ticker": "4385.JP",
       "company_name": "メルカリ",
-      "category_desc": "株探急上昇【東証プライム】前日比+10.63%",
+      "category_desc": "株探急上昇【東証プライム】前日比+10.82%",
       "entry_price": 4385.0,
       "take_profit": 4552.6,
       "stop_loss": 4297.9,
@@ -1682,8 +1682,8 @@
       "probability_pct": 54.7,
       "risk_reward": 1.92,
       "friction_deducted_pct": 0.21,
-      "volatility": 0.0675,
-      "turnover": 8131.1,
+      "volatility": 0.068,
+      "turnover": 9348.4,
       "is_hidden_gem": false
     },
     {
@@ -1705,7 +1705,7 @@
     }
   ],
   "empirical_proof_metrics": {
-    "empirical_win_rate_pct": 57.75,
+    "empirical_win_rate_pct": 57.74,
     "empirical_sharpe_ratio": 3.2,
     "empirical_max_drawdown_pct": 3.5,
     "empirical_avg_profit_pct": 2.09,

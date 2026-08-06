@@ -1,6 +1,6 @@
 {
   "prediction_date": "2026-08-06",
-  "generated_at": "2026-08-06 10:11:36",
+  "generated_at": "2026-08-06 10:30:19",
   "stage": "Stage 3 (Intraday 09:30 Post-Open Update TOP 20)",
   "report_title": "日本株AI予測・09:30場中更新発注推奨レポート",
   "report_subtitle": "<b>対象日:</b> 2026-08-06 ザラ場前場 (09:30 寄付後30分実約定・ギャップ反映 TOP 20)",
@@ -8,7 +8,7 @@
     {
       "ticker": "5301.JP",
       "company_name": "東海カーボン",
-      "category_desc": "株探急上昇【東証プライム】前日比+13.63%",
+      "category_desc": "株探急上昇【東証プライム】前日比+12.15%",
       "entry_price": 5356.7,
       "take_profit": 5535.7,
       "stop_loss": 5250.3,
@@ -18,7 +18,7 @@
       "risk_reward": 1.68,
       "friction_deducted_pct": 0.21,
       "volatility": 0.0714,
-      "turnover": 23723.81,
+      "turnover": 25797.97,
       "is_hidden_gem": false
     },
     {
@@ -40,7 +40,7 @@
     {
       "ticker": "4813.JP",
       "company_name": "ＡＣＣＥＳＳ",
-      "category_desc": "株探急上昇【東証プライム】前日比+12.97%",
+      "category_desc": "株探急上昇【東証プライム】前日比+12.43%",
       "entry_price": 4928.5,
       "take_profit": 5110.9,
       "stop_loss": 4829.2,
@@ -50,13 +50,13 @@
       "risk_reward": 1.84,
       "friction_deducted_pct": 0.24,
       "volatility": 0.0714,
-      "turnover": 9727.74,
+      "turnover": 10778.68,
       "is_hidden_gem": false
     },
     {
       "ticker": "2801.JP",
       "company_name": "キッコマン",
-      "category_desc": "株探急上昇【東証プライム】前日比+11.48%",
+      "category_desc": "株探急上昇【東証プライム】前日比+11.92%",
       "entry_price": 2851.4,
       "take_profit": 2943.3,
       "stop_loss": 2797.6,
@@ -66,13 +66,13 @@
       "risk_reward": 1.71,
       "friction_deducted_pct": 0.25,
       "volatility": 0.0714,
-      "turnover": 10093.050000000001,
+      "turnover": 12997.93,
       "is_hidden_gem": false
     },
     {
       "ticker": "4483.JP",
       "company_name": "ＪＭＤＣ",
-      "category_desc": "株探急上昇【東証プライム】前日比+10.42%",
+      "category_desc": "株探急上昇【東証プライム】前日比+11.4%",
       "entry_price": 4557.0,
       "take_profit": 4692.0,
       "stop_loss": 4475.2,
@@ -81,14 +81,14 @@
       "probability_pct": 57.9,
       "risk_reward": 1.65,
       "friction_deducted_pct": 0.26,
-      "volatility": 0.070035,
-      "turnover": 2147.53,
+      "volatility": 0.0714,
+      "turnover": 2372.92,
       "is_hidden_gem": false
     },
     {
       "ticker": "2269.JP",
       "company_name": "明治ＨＤ",
-      "category_desc": "株探急上昇【東証プライム】前日比+10.08%",
+      "category_desc": "株探急上昇【東証プライム】前日比+10.19%",
       "entry_price": 2296.2,
       "take_profit": 2364.4,
       "stop_loss": 2253.1,
@@ -97,14 +97,14 @@
       "probability_pct": 57.5,
       "risk_reward": 1.58,
       "friction_deducted_pct": 0.27,
-      "volatility": 0.068565,
-      "turnover": 2561.2400000000002,
+      "volatility": 0.06909,
+      "turnover": 2847.02,
       "is_hidden_gem": false
     },
     {
       "ticker": "4452.JP",
       "company_name": "花王",
-      "category_desc": "株探急上昇【東証プライム】前日比+10.45%",
+      "category_desc": "株探急上昇【東証プライム】前日比+11.23%",
       "entry_price": 4578.9,
       "take_profit": 4757.1,
       "stop_loss": 4489.3,
@@ -113,8 +113,8 @@
       "probability_pct": 56.7,
       "risk_reward": 1.99,
       "friction_deducted_pct": 0.18,
-      "volatility": 0.07014000000000001,
-      "turnover": 22108.46,
+      "volatility": 0.0714,
+      "turnover": 25541.890000000003,
       "is_hidden_gem": false
     },
     {
@@ -136,7 +136,7 @@
     {
       "ticker": "4385.JP",
       "company_name": "メルカリ",
-      "category_desc": "株探急上昇【東証プライム】前日比+10.63%",
+      "category_desc": "株探急上昇【東証プライム】前日比+10.82%",
       "entry_price": 4503.4,
       "take_profit": 4675.5,
       "stop_loss": 4414.0,
@@ -145,14 +145,14 @@
       "probability_pct": 54.7,
       "risk_reward": 1.93,
       "friction_deducted_pct": 0.21,
-      "volatility": 0.07087500000000001,
-      "turnover": 8944.210000000001,
+      "volatility": 0.0714,
+      "turnover": 10283.24,
       "is_hidden_gem": false
     },
     {
       "ticker": "6645.JP",
       "company_name": "オムロン",
-      "category_desc": "株探急上昇【東証プライム】前日比+13.18%",
+      "category_desc": "株探急上昇【東証プライム】前日比+14.57%",
       "entry_price": 6794.5,
       "take_profit": 7046.0,
       "stop_loss": 6659.5,
@@ -162,7 +162,7 @@
       "risk_reward": 1.86,
       "friction_deducted_pct": 0.21,
       "volatility": 0.0714,
-      "turnover": 18795.7,
+      "turnover": 22081.95,
       "is_hidden_gem": false
     }
   ],
