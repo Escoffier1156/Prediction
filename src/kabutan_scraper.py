@@ -58,17 +58,15 @@ class KabutanScraper:
             tds = re.findall(r'<td[^>]*>(.*?)</td>', block, re.DOTALL)
             td_texts = [re.sub(r'<[^>]+>', '', td).strip().replace(",", "") for td in tds]
 
-            # Price is typically in td_texts[3] or td_texts[4], volume is in td_texts[7]
+            # Extract price (td_texts[4]) and volume (td_texts[8])
             price = 2500.0
             volume = 100000.0
-            
-            for txt in td_texts:
-                if re.match(r'^\d+(\.\d+)?$', txt):
-                    val = float(txt)
-                    if 50.0 <= val <= 200000.0 and price == 2500.0:
-                        price = val
-                    elif val > 1000.0:
-                        volume = val
+
+            if len(td_texts) >= 5 and re.match(r'^\d+(\.\d+)?$', td_texts[4]):
+                price = float(td_texts[4])
+
+            if len(td_texts) >= 9 and re.match(r'^\d+(\.\d+)?$', td_texts[8]):
+                volume = float(td_texts[8])
 
             turnover_millions = round((price * volume) / 1_000_000.0, 1)
             volatility = max(0.025, min(0.068, round(abs(change_pct) / 100.0 * 0.40 + 0.025, 4)))
