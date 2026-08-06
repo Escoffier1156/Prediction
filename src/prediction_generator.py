@@ -228,7 +228,7 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, i
     morning_data = {
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         "stage": "Stage 2 (Morning 08:30 Final Execution TOP 20)",
-        "report_title": "日本株AI予測・翌日買付推奨スクリーニングレポート",
+        "report_title": "日本株市場予測・翌日買付推奨スクリーニングレポート",
         "report_subtitle": f"<b>対象日:</b> {date_target} 市場オープン気配予想 (前日大引けデータ反映 TOP 20 厳選データ)",
         "mainstream_top10": m_signals, "hidden_gems_top10": h_signals,
         "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals + h_signals)
@@ -272,7 +272,7 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, i
     intraday_0930_data = {
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         "stage": "Stage 3 (Intraday 09:30 Post-Open Update TOP 20)",
-        "report_title": "日本株AI予測・09:30場中更新発注推奨レポート",
+        "report_title": "日本株市場予測・09:30場中更新発注推奨レポート",
         "report_subtitle": f"<b>対象日:</b> {date_target} ザラ場前場 (09:30 寄付後30分実約定・ギャップ反映 TOP 20)",
         "mainstream_top10": m_signals_0930, "hidden_gems_top10": h_signals_0930,
         "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_0930 + h_signals_0930)
@@ -289,7 +289,7 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, i
     intraday_1030_data = {
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         "stage": "Stage 4 (Intraday 10:30 Mid-Morning Update TOP 20)",
-        "report_title": "日本株AI予測・10:30場中更新発注推奨レポート",
+        "report_title": "日本株市場予測・10:30場中更新発注推奨レポート",
         "report_subtitle": f"<b>対象日:</b> {date_target} ザラ場前場 (10:30 1.5時間出来高トレンド・実価格反映 TOP 20)",
         "mainstream_top10": m_signals_1030, "hidden_gems_top10": h_signals_1030,
         "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_1030 + h_signals_1030)
@@ -306,7 +306,7 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, i
     intraday_1300_data = {
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         "stage": "Stage 5 (Intraday 13:00 Post-Lunch Update TOP 20)",
-        "report_title": "日本株AI予測・13:00場中更新発注推奨レポート",
+        "report_title": "日本株市場予測・13:00場中更新発注推奨レポート",
         "report_subtitle": f"<b>対象日:</b> {date_target} ザラ場後場 (13:00 後場寄り後30分実価格反映 TOP 20)",
         "mainstream_top10": m_signals_1300, "hidden_gems_top10": h_signals_1300,
         "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_1300 + h_signals_1300)

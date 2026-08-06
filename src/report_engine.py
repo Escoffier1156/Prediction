@@ -55,7 +55,7 @@ def generate_top20_pdf_report(json_path: str, pdf_out_path: str):
     cell_green = ParagraphStyle('CellGreen', parent=styles['Normal'], fontName=jp_font, fontSize=7.5, leading=9.5, textColor=colors.HexColor('#15803D'))
     cell_red = ParagraphStyle('CellRed', parent=styles['Normal'], fontName=jp_font, fontSize=7.5, leading=9.5, textColor=colors.HexColor('#B91C1C'))
 
-    doc_title_text = data.get("report_title", "日本株AI予測・08:30最終実行買付推奨レポート")
+    doc_title_text = data.get("report_title", "日本株市場予測・08:30最終実行買付推奨レポート")
     sub_title_text = data.get("report_subtitle", f"<b>対象日:</b> {date_target} 市場オープン (08:30 寄前気配反映 TOP 20 厳選データ)")
 
     story = []
