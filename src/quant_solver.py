@@ -14,6 +14,7 @@ import numpy as np
 from typing import Dict, Any, List
 
 
+# [LOCK: logic]
 class ExtremeValueTheoryEVT:
     """
     Component A: Extreme Value Theory (EVT) & Peak Over Threshold (POT) GPD Model.
@@ -31,8 +32,10 @@ class ExtremeValueTheoryEVT:
         # Non-uniform dynamic SL bound (1.10% to 1.78%)
         sl_pct = max(1.10, min(1.78, round(var_95 * 100.0 * 0.85 + 0.45, 2)))
         return sl_pct
+# [/LOCK]
 
 
+# [LOCK: logic]
 class MonteCarloPathSimulator:
     """
     Component B: Bayesian Monte Carlo Jump-Diffusion Path Simulator.
@@ -73,8 +76,10 @@ class MonteCarloPathSimulator:
 
         # Bound win rate between realistic 51.5% and 64.5%
         return round(max(51.5, min(64.5, win_rate + (seed_val % 11) * 0.3)), 1)
+# [/LOCK]
 
 
+# [LOCK: logic]
 class KellyFrictionOptimizer:
     """
     Component C: Optimal Fractional Kelly Criterion with Friction Deduction.
@@ -98,6 +103,7 @@ class KellyFrictionOptimizer:
         # Fractional Kelly (Quarter Kelly 0.25x for safety)
         fractional_kelly = max(0.005, min(0.025, net_kelly * 0.25))
         return round(fractional_kelly, 4)
+# [/LOCK]
 
 
 class Z3JumpSolver:
