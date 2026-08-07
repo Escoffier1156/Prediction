@@ -52,7 +52,9 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, i
     if use_kabutan:
         try:
             scraper = KabutanScraper()
-            kabutan_stocks = scraper.fetch_warning_universe("2_1")
+            w_stocks = scraper.fetch_warning_universe("2_1")
+            pts_stocks = scraper.fetch_pts_universe()
+            kabutan_stocks = w_stocks + pts_stocks
         except Exception as e:
             print(f"⚠️ Kabutan fetch warning: {e}")
 

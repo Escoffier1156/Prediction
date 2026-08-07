@@ -86,6 +86,15 @@ class KabutanScraper:
 
         print(f"✔ Successfully scraped {len(stocks)} live stock alerts from Kabutan ({url})!")
         return stocks
+
+    def fetch_pts_universe(self) -> List[Dict[str, Any]]:
+        """
+        Fetches live Night Trading PTS ranking from Kabutan (株探).
+        URL: https://kabutan.jp/warning/?mode=3_1&dispmode=normal
+        """
+        url = "https://kabutan.jp/warning/?mode=3_1&dispmode=normal"
+        print(f"🌙 Scraper: Fetching live Kabutan PTS Night Trading universe from: {url}")
+        return self.fetch_warning_universe(mode="3_1")
     # [/LOCK]
 
 
