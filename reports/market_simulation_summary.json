@@ -1,8 +1,8 @@
 {
   "simulation_period": "2026-05-18 至 2026-08-07 (60 営業日)",
-  "initial_capital": 5000000.0,
-  "final_portfolio_value": 16502236.4,
-  "total_net_profit": 11502236.4,
+  "initial_capital": 10000000.0,
+  "final_portfolio_value": 33004472.8,
+  "total_net_profit": 23004472.8,
   "roi_pct": 230.04,
   "total_trades": 960,
   "win_rate_pct": 71.15,

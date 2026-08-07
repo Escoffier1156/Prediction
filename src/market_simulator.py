@@ -24,7 +24,7 @@ from data_engine import JQuantsAPIClient
 
 
 class MarketEnvironmentSimulator:
-    def __init__(self, initial_capital: float = 5_000_000.0, num_days: int = 60):
+    def __init__(self, initial_capital: float = 10_000_000.0, num_days: int = 60):
         self.initial_capital = initial_capital
         self.num_days = num_days
         self.solver = Z3JumpSolver()
@@ -288,5 +288,5 @@ class MarketEnvironmentSimulator:
 
 
 if __name__ == "__main__":
-    sim = MarketEnvironmentSimulator(initial_capital=5_000_000.0, num_days=60)
+    sim = MarketEnvironmentSimulator(initial_capital=10_000_000.0, num_days=60)
     sim.run_simulation()

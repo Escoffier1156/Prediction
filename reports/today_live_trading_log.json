@@ -1,8 +1,8 @@
 {
-  "trading_date": "2026-08-07",
-  "initial_capital": 5000000.0,
-  "final_capital": 5131683.2,
-  "daily_net_pnl": 131683.2,
-  "win_rate_pct": 75.0,
-  "total_trades": 16
+  "trading_date": "2026-08-08",
+  "initial_capital": 10000000.0,
+  "final_capital": 10226431.5,
+  "daily_net_pnl": 226431.5,
+  "win_rate_pct": 90.0,
+  "total_trades": 10
 }

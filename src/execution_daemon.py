@@ -59,7 +59,7 @@ def main():
     args = parser.parse_args()
 
     if args.live or args.daemon:
-        streamer = LiveTradingStreamer(initial_capital=5_000_000.0)
+        streamer = LiveTradingStreamer(initial_capital=10_000_000.0)
         if args.mode == "live":
             streamer.run_wall_clock_daemon()
         else:

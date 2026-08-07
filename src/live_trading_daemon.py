@@ -24,7 +24,7 @@ from prediction_generator import run_prediction_pipeline
 
 
 class LiveTradingStreamer:
-    def __init__(self, initial_capital: float = 5_000_000.0):
+    def __init__(self, initial_capital: float = 10_000_000.0):
         self.capital = initial_capital
         self.initial_capital = initial_capital
         self.solver = Z3JumpSolver()
@@ -42,7 +42,7 @@ class LiveTradingStreamer:
 
         print("=" * 80)
         print(f" 🚀 日本株市場リアルタイム取引システム 【実時間監視モード】 ({target_date})")
-        print(f" 💰 運用元本: ¥{self.capital:,.0f} (500万円) | 対象: 08:30 TOP5 (10銘柄) + 10:30 TOP3 (6銘柄)")
+        print(f" 💰 運用元本: ¥{self.capital:,.0f} (1,000万円) | 対象: 08:30 TOP5 (10銘柄) + 10:30 TOP3 (6銘柄)")
         print(f" 📡 リアルタイムソース: 株探（警報・出来高急増・PTS夜間取引）＋ 東証全4,000銘柄")
         print("=" * 80)
         print("\033[36m[SYSTEM] 現在時刻と同期中... 9:00〜15:00 の間、リアルタイムで取引を監視・配信し続けます。\033[0m\n")
@@ -110,7 +110,7 @@ class LiveTradingStreamer:
 
         print("=" * 80)
         print(f" 🚀 日本株市場 9:00〜15:00 リアルタイム取引ストリーミング ({target_date})")
-        print(f" 💰 初期運用元本: ¥{self.capital:,.0f} (500万円) | 銘柄枠: 朝08:30 TOP5 (10銘柄) + ザラ場 TOP3 (6銘柄)")
+        print(f" 💰 初期運用元本: ¥{self.capital:,.0f} (1,000万円) | 銘柄枠: 朝08:30 TOP5 (10銘柄) + ザラ場 TOP3 (6銘柄)")
         print(f" 📡 情報ソース: 株探（警報・出来高急増・PTS夜間取引）＋ 東証全4,000銘柄")
         print("=" * 80)
         print("\033[36m[LIVE] 09:00〜15:00 のリアルタイム板・約定ストリーミングを開始します...\033[0m\n")
@@ -148,7 +148,7 @@ class LiveTradingStreamer:
         ]
 
         print("\n" + "-" * 75)
-        print("【08:30 寄前発注予定リスト（全10銘柄 / 投資枠: ¥3,000,000）】")
+        print(f"【08:30 寄前発注予定リスト（全10銘柄 / 投資枠: ¥{m_pool:,.0f}）】")
         for rank, (code, name, prev, target_entry, tp, sl, win_rate) in enumerate(morning_targets, start=1):
             print(f" #{rank:02d} | {code:8s} | {name:12s} | 前日:¥{prev:,.1f} | 買付目安:¥{target_entry:,.1f} | TP:¥{tp:,.1f} | SL:¥{sl:,.1f} | 到達率:{win_rate}%")
         print("-" * 75 + "\n")
