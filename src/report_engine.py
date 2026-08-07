@@ -70,7 +70,7 @@ def generate_top20_pdf_report(json_path: str, pdf_out_path: str):
         story.append(Spacer(1, 2))
         headers = [
             Paragraph("順位", cell_bold), Paragraph("コード", cell_bold), Paragraph("銘柄名・企業名", cell_bold),
-            Paragraph("前日終値", cell_bold), Paragraph("買付目安 (前日比)", cell_bold),
+            Paragraph("前日終値", cell_bold), Paragraph("買付目安 (前日比)", cell_bold), Paragraph("日中足 (寄比)", cell_bold),
             Paragraph("利確目標 (TP)", cell_bold), Paragraph("損切境界 (SL)", cell_bold),
             Paragraph("到達確度", cell_bold), Paragraph("RR比", cell_bold), Paragraph("摩擦控除", cell_bold)
         ]
@@ -79,11 +79,15 @@ def generate_top20_pdf_report(json_path: str, pdf_out_path: str):
             prev_p = item.get("prev_close", item["entry_price"])
             chg = item.get("change_pct", 0.0)
             chg_str = f"+{chg:.2f}%" if chg >= 0 else f"{chg:.2f}%"
+            
+            intra_chg = item.get("intraday_change_pct", 0.0)
+            intra_str = "寄前 0.0%" if intra_chg == 0.0 else (f"+{intra_chg:.2f}%" if intra_chg > 0 else f"{intra_chg:.2f}%")
 
             row = [
                 Paragraph(str(idx), cell_bold), Paragraph(item["ticker"], cell_bold), Paragraph(item["company_name"], cell_normal),
                 Paragraph(f"¥{prev_p:,.1f}", cell_normal),
                 Paragraph(f"¥{item['entry_price']:,.1f} ({chg_str})", cell_bold),
+                Paragraph(intra_str, cell_green if intra_chg >= 0 else cell_red),
                 Paragraph(f"¥{item['take_profit']:,.1f} (+{item['tp_pct']}%)", cell_green),
                 Paragraph(f"¥{item['stop_loss']:,.1f} ({item['sl_pct']}%)", cell_red),
                 Paragraph(f"{item.get('probability_pct', 55.0):.1f}%", cell_green),
@@ -92,7 +96,7 @@ def generate_top20_pdf_report(json_path: str, pdf_out_path: str):
             ]
             t_data.append(row)
 
-        t = Table(t_data, colWidths=[20, 42, 105, 52, 95, 90, 85, 42, 35, 40])
+        t = Table(t_data, colWidths=[18, 40, 95, 48, 88, 55, 82, 78, 38, 32, 36])
         t.setStyle(TableStyle([
             ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#F1F5F9')),
             ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),

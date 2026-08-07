@@ -215,7 +215,7 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, i
             z3_res = solver.solve_boundary_jump(c_price, ticker, vol, turn, gem)
             res.append({
                 "ticker": ticker, "company_name": item["company_name"], "category_desc": item["category_desc"],
-                "prev_close": prev_close, "entry_price": c_price, "change_pct": chg_pct,
+                "prev_close": prev_close, "entry_price": c_price, "change_pct": chg_pct, "intraday_change_pct": 0.0,
                 "take_profit": z3_res["take_profit_price"], "stop_loss": z3_res["stop_loss_price"],
                 "tp_pct": z3_res["tp_pct"], "sl_pct": z3_res["sl_pct"], "probability_pct": z3_res["logical_probability_pct"],
                 "risk_reward": z3_res["risk_reward_ratio"], "friction_deducted_pct": z3_res["friction_deducted_pct"],
@@ -249,7 +249,9 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, i
 
             c_price = round(item["entry_price"] * intraday_mult, 1)
             prev_close = item.get("prev_close", round(c_price / 1.025, 1))
+            open_price = item.get("entry_price", c_price)
             chg_pct = round(((c_price - prev_close) / prev_close) * 100.0, 2) if prev_close > 0 else 2.5
+            intra_chg_pct = round(((c_price - open_price) / open_price) * 100.0, 2) if open_price > 0 else 0.0
 
             vol = item.get("volatility", 0.025) * 1.05
             turn = item.get("turnover", 500.0) * 1.10
@@ -257,7 +259,7 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, i
             z3_res = solver.solve_boundary_jump(c_price, ticker, vol, turn, gem)
             res.append({
                 "ticker": ticker, "company_name": item["company_name"], "category_desc": item["category_desc"],
-                "prev_close": prev_close, "entry_price": c_price, "change_pct": chg_pct,
+                "prev_close": prev_close, "entry_price": c_price, "change_pct": chg_pct, "intraday_change_pct": intra_chg_pct,
                 "take_profit": z3_res["take_profit_price"], "stop_loss": z3_res["stop_loss_price"],
                 "tp_pct": z3_res["tp_pct"], "sl_pct": z3_res["sl_pct"], "probability_pct": z3_res["logical_probability_pct"],
                 "risk_reward": z3_res["risk_reward_ratio"], "friction_deducted_pct": z3_res["friction_deducted_pct"],
