@@ -103,16 +103,17 @@ def generate_top20_pdf_report(json_path: str, pdf_out_path: str):
         ]))
         return t
 
-    story.append(build_table(mainstream, "1. 王道部門 TOP 10 (東証大型・主力株)"))
+    story.append(build_table(mainstream, f"1. 王道部門 TOP {len(mainstream)} (東証大型・主力株)"))
     story.append(Spacer(1, 6))
-    story.append(build_table(hidden, "2. 隠れ銘柄部門 TOP 10 (高成長中小型株)"))
+    story.append(build_table(hidden, f"2. 隠れ銘柄部門 TOP {len(hidden)} (高成長中小型株)"))
     story.append(Spacer(1, 6))
 
     story.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor('#CBD5E1'), spaceBefore=2, spaceAfter=4))
     story.append(Paragraph("実証検証パフォーマンス ＆ 全結果数理指標", h2_style))
+    total_exec = len(mainstream) + len(hidden)
     m_data = [
         [Paragraph("<b>検証カテゴリー</b>", cell_bold), Paragraph("<b>シャープレシオ</b>", cell_bold), Paragraph("<b>勝率 (Win Rate)</b>", cell_bold), Paragraph("<b>最大ドローダウン</b>", cell_bold), Paragraph("<b>摩擦コスト控除</b>", cell_bold)],
-        [Paragraph("最終実行20銘柄", cell_normal), Paragraph(f"<b>{metrics.get('empirical_sharpe_ratio', 2.80)}</b>", cell_green), Paragraph(f"<b>{metrics.get('empirical_win_rate_pct', 52.50)}%</b>", cell_green), Paragraph(f"<b>{metrics.get('empirical_max_drawdown_pct', 12.80)}%</b>", cell_bold), Paragraph("-0.14% 〜 -0.33%", cell_normal)]
+        [Paragraph(f"最終実行{total_exec}銘柄", cell_normal), Paragraph(f"<b>{metrics.get('empirical_sharpe_ratio', 2.80)}</b>", cell_green), Paragraph(f"<b>{metrics.get('empirical_win_rate_pct', 52.50)}%</b>", cell_green), Paragraph(f"<b>{metrics.get('empirical_max_drawdown_pct', 12.80)}%</b>", cell_bold), Paragraph("-0.14% 〜 -0.33%", cell_normal)]
     ]
     t_m = Table(m_data, colWidths=[120, 90, 100, 100, 120])
     t_m.setStyle(TableStyle([

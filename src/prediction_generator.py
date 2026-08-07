@@ -188,10 +188,10 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, i
     with open(f"{date_dir}/tomorrow_top100_earnings_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
         json.dump(night_data, f, indent=2, ensure_ascii=False)
 
-    # 2. Stage 2: Morning 08:30 Execution TOP 20 (Mainstream 10 & Hidden 10)
+    # 2. Stage 2: Morning 08:30 Execution TOP 5 (Mainstream 5 & Hidden 5)
     morning_20 = strategy.finalize_morning_top20(night_100, {}, top_n=20)
-    m_top10 = [x for x in morning_20 if not x.get("is_hidden_gem", False)][:10]
-    h_top10 = [x for x in morning_20 if x.get("is_hidden_gem", False)][:10]
+    m_top5 = [x for x in morning_20 if not x.get("is_hidden_gem", False)][:5]
+    h_top5 = [x for x in morning_20 if x.get("is_hidden_gem", False)][:5]
 
     # [LOCK: ast]
     def build_top10_list(raw_top10):
@@ -222,14 +222,14 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, i
         return res
     # [/LOCK]
 
-    m_signals = build_top10_list(m_top10 if len(m_top10) == 10 else top100_processed[:10])
-    h_signals = build_top10_list(h_top10 if len(h_top10) == 10 else top100_processed[10:20])
+    m_signals = build_top10_list(m_top5 if len(m_top5) == 5 else top100_processed[:5])
+    h_signals = build_top10_list(h_top5 if len(h_top5) == 5 else top100_processed[5:10])
 
     morning_data = {
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "stage": "Stage 2 (Morning 08:30 Final Execution TOP 20)",
+        "stage": "Stage 2 (Morning 08:30 Final Execution TOP 5)",
         "report_title": "日本株市場予測・翌日買付推奨スクリーニングレポート",
-        "report_subtitle": f"<b>対象日:</b> {date_target} 市場オープン気配予想 (前日大引けデータ反映 TOP 20 厳選データ)",
+        "report_subtitle": f"<b>対象日:</b> {date_target} 市場オープン気配予想 (前日大引けデータ反映 TOP 5 厳選データ)",
         "mainstream_top10": m_signals, "hidden_gems_top10": h_signals,
         "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals + h_signals)
     }
@@ -263,53 +263,53 @@ def run_prediction_pipeline(date_target: str = None, use_kabutan: bool = True, i
             })
         return res
 
-    # 3. Stage 3: Intraday 09:30 Post-Open Update
-    m_signals_0930 = build_intraday_signals(m_signals, 0.018)
-    h_signals_0930 = build_intraday_signals(h_signals, 0.018)
+    # 3. Stage 3: Intraday 09:30 Post-Open Update (TOP 3)
+    m_signals_0930 = build_intraday_signals(m_signals[:3], 0.018)
+    h_signals_0930 = build_intraday_signals(h_signals[:3], 0.018)
     m_signals_0930.sort(key=lambda x: (x["probability_pct"], x["risk_reward"]), reverse=True)
     h_signals_0930.sort(key=lambda x: (x["probability_pct"], x["risk_reward"]), reverse=True)
 
     intraday_0930_data = {
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "stage": "Stage 3 (Intraday 09:30 Post-Open Update TOP 20)",
+        "stage": "Stage 3 (Intraday 09:30 Post-Open Update TOP 3)",
         "report_title": "日本株市場予測・09:30場中更新発注推奨レポート",
-        "report_subtitle": f"<b>対象日:</b> {date_target} ザラ場前場 (09:30 寄付後30分実約定・ギャップ反映 TOP 20)",
-        "mainstream_top10": m_signals_0930, "hidden_gems_top10": h_signals_0930,
-        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_0930 + h_signals_0930)
+        "report_subtitle": f"<b>対象日:</b> {date_target} ザラ場前場 (09:30 寄付後30分実約定・ギャップ反映 TOP 3)",
+        "mainstream_top10": m_signals_0930[:3], "hidden_gems_top10": h_signals_0930[:3],
+        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_0930[:3] + h_signals_0930[:3])
     }
     with open(f"{date_dir}/intraday_0930_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
         json.dump(intraday_0930_data, f, indent=2, ensure_ascii=False)
 
-    # 4. Stage 4: Intraday 10:30 Mid-Morning Update
-    m_signals_1030 = build_intraday_signals(m_signals, 0.025)
-    h_signals_1030 = build_intraday_signals(h_signals, 0.025)
+    # 4. Stage 4: Intraday 10:30 Mid-Morning Update (TOP 3)
+    m_signals_1030 = build_intraday_signals(m_signals[:3], 0.025)
+    h_signals_1030 = build_intraday_signals(h_signals[:3], 0.025)
     m_signals_1030.sort(key=lambda x: (x["probability_pct"], x["risk_reward"]), reverse=True)
     h_signals_1030.sort(key=lambda x: (x["probability_pct"], x["risk_reward"]), reverse=True)
 
     intraday_1030_data = {
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "stage": "Stage 4 (Intraday 10:30 Mid-Morning Update TOP 20)",
+        "stage": "Stage 4 (Intraday 10:30 Mid-Morning Update TOP 3)",
         "report_title": "日本株市場予測・10:30場中更新発注推奨レポート",
-        "report_subtitle": f"<b>対象日:</b> {date_target} ザラ場前場 (10:30 1.5時間出来高トレンド・実価格反映 TOP 20)",
-        "mainstream_top10": m_signals_1030, "hidden_gems_top10": h_signals_1030,
-        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_1030 + h_signals_1030)
+        "report_subtitle": f"<b>対象日:</b> {date_target} ザラ場前場 (10:30 1.5時間出来高トレンド・実価格反映 TOP 3)",
+        "mainstream_top10": m_signals_1030[:3], "hidden_gems_top10": h_signals_1030[:3],
+        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_1030[:3] + h_signals_1030[:3])
     }
     with open(f"{date_dir}/intraday_1030_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
         json.dump(intraday_1030_data, f, indent=2, ensure_ascii=False)
 
-    # 5. Stage 5: Intraday 13:00 Post-Lunch Update
-    m_signals_1300 = build_intraday_signals(m_signals, 0.035)
-    h_signals_1300 = build_intraday_signals(h_signals, 0.035)
+    # 5. Stage 5: Intraday 13:00 Post-Lunch Update (TOP 3)
+    m_signals_1300 = build_intraday_signals(m_signals[:3], 0.035)
+    h_signals_1300 = build_intraday_signals(h_signals[:3], 0.035)
     m_signals_1300.sort(key=lambda x: (x["probability_pct"], x["risk_reward"]), reverse=True)
     h_signals_1300.sort(key=lambda x: (x["probability_pct"], x["risk_reward"]), reverse=True)
 
     intraday_1300_data = {
         "prediction_date": date_target, "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "stage": "Stage 5 (Intraday 13:00 Post-Lunch Update TOP 20)",
+        "stage": "Stage 5 (Intraday 13:00 Post-Lunch Update TOP 3)",
         "report_title": "日本株市場予測・13:00場中更新発注推奨レポート",
-        "report_subtitle": f"<b>対象日:</b> {date_target} ザラ場後場 (13:00 後場寄り後30分実価格反映 TOP 20)",
-        "mainstream_top10": m_signals_1300, "hidden_gems_top10": h_signals_1300,
-        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_1300 + h_signals_1300)
+        "report_subtitle": f"<b>対象日:</b> {date_target} ザラ場後場 (13:00 後場寄り後30分実価格反映 TOP 3)",
+        "mainstream_top10": m_signals_1300[:3], "hidden_gems_top10": h_signals_1300[:3],
+        "empirical_proof_metrics": aggregator.compute_empirical_performance_metrics(m_signals_1300[:3] + h_signals_1300[:3])
     }
     with open(f"{date_dir}/intraday_1300_signals_{file_suffix}.json", "w", encoding="utf-8") as f:
         json.dump(intraday_1300_data, f, indent=2, ensure_ascii=False)
