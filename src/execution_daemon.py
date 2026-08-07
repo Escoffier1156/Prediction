@@ -16,6 +16,9 @@ from prediction_generator import run_prediction_pipeline
 from backtest_engine import RigorousBacktester
 
 
+from live_trading_daemon import LiveTradingStreamer
+
+
 class AutomatedLineTrader:
     def __init__(self, webhook_url: str = None):
         self.webhook_url = webhook_url or os.environ.get("LINE_NOTIFY_WEBHOOK_URL", "")
@@ -50,16 +53,18 @@ def main():
     parser.add_argument("--predict", action="store_true", help="Run dual-stage prediction pipeline")
     parser.add_argument("--backtest", action="store_true", help="Run 10-year walk-forward backtest")
     parser.add_argument("--daemon", action="store_true", help="Run market schedule execution daemon")
+    parser.add_argument("--live", action="store_true", help="Run 09:00-15:00 real-time market trading log streamer")
+    parser.add_argument("--mode", choices=["live", "replay"], default="replay", help="Live stream mode: live or replay")
     args = parser.parse_args()
 
-    if args.predict or len(sys.argv) == 1:
+    if args.live or args.daemon:
+        streamer = LiveTradingStreamer(initial_capital=5_000_000.0)
+        streamer.run_trading_session(fast_mode=(args.mode == "replay"))
+    elif args.predict or len(sys.argv) == 1:
         run_prediction_pipeline()
     elif args.backtest:
         bt = RigorousBacktester()
         bt.run_walk_forward_backtest()
-    elif args.daemon:
-        daemon = MarketExecutionDaemon()
-        daemon.run_morning_0830_execution()
 
 
 if __name__ == "__main__":
