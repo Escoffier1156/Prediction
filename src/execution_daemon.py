@@ -54,12 +54,16 @@ def main():
     parser.add_argument("--backtest", action="store_true", help="Run 10-year walk-forward backtest")
     parser.add_argument("--daemon", action="store_true", help="Run market schedule execution daemon")
     parser.add_argument("--live", action="store_true", help="Run 09:00-15:00 real-time market trading log streamer")
-    parser.add_argument("--mode", choices=["live", "replay"], default="replay", help="Live stream mode: live or replay")
+    parser.add_argument("--mode", choices=["live", "ticker"], default="ticker", help="Stream mode: live (sync with clock) or ticker (continuous streaming animation)")
+    parser.add_argument("--interval", type=float, default=0.8, help="Tick streaming interval in seconds")
     args = parser.parse_args()
 
     if args.live or args.daemon:
         streamer = LiveTradingStreamer(initial_capital=5_000_000.0)
-        streamer.run_trading_session(fast_mode=(args.mode == "replay"))
+        if args.mode == "live":
+            streamer.run_wall_clock_daemon()
+        else:
+            streamer.run_continuous_ticker_stream(interval_sec=args.interval)
     elif args.predict or len(sys.argv) == 1:
         run_prediction_pipeline()
     elif args.backtest:
