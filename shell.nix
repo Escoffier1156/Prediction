@@ -22,6 +22,7 @@ pkgs.mkShell {
     guile
     pixi
     zlib
+    tmux
   ];
 
   shellHook = ''
