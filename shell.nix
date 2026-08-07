@@ -21,11 +21,12 @@ pkgs.mkShell {
     j
     guile
     pixi
+    zlib
   ];
 
   shellHook = ''
     export PATH="$HOME/.pixi/bin:/usr/local/bin:$PATH"
-    export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.zlib}/lib:$LD_LIBRARY_PATH"
 
     export CHPL_LLVM=none
     if [ -f "$HOME/chapel/util/setchplenv.bash" ]; then
