@@ -1,8 +1,120 @@
 {
   "trading_date": "2026-08-08",
   "initial_capital": 10000000.0,
-  "final_capital": 10226431.5,
-  "daily_net_pnl": 226431.5,
+  "final_capital": 10212608.5,
+  "daily_net_pnl": 212608.5,
   "win_rate_pct": 90.0,
-  "total_trades": 10
+  "total_trades": 10,
+  "trades": [
+    {
+      "stage": "08:30 TOP5",
+      "ticker": "4527.JP",
+      "company_name": "ロート製薬",
+      "entry_price": 2944.2,
+      "exit_price": 3058.0,
+      "shares": 203,
+      "status": "TP達成 (利確)",
+      "pnl": 23101.4,
+      "return_pct": 3.87
+    },
+    {
+      "stage": "08:30 TOP5",
+      "ticker": "8035.JP",
+      "company_name": "東京エレクトロン",
+      "entry_price": 57965.5,
+      "exit_price": 60724.8,
+      "shares": 10,
+      "status": "TP達成 (利確)",
+      "pnl": 27593.0,
+      "return_pct": 4.76
+    },
+    {
+      "stage": "08:30 TOP5",
+      "ticker": "7203.JP",
+      "company_name": "トヨタ自動車",
+      "entry_price": 2896.8,
+      "exit_price": 3015.0,
+      "shares": 207,
+      "status": "TP達成 (利確)",
+      "pnl": 24467.4,
+      "return_pct": 4.08
+    },
+    {
+      "stage": "08:30 TOP5",
+      "ticker": "6146.JP",
+      "company_name": "ディスコ",
+      "entry_price": 44272.3,
+      "exit_price": 45914.3,
+      "shares": 13,
+      "status": "TP達成 (利確)",
+      "pnl": 21346.0,
+      "return_pct": 3.71
+    },
+    {
+      "stage": "08:30 TOP5",
+      "ticker": "9984.JP",
+      "company_name": "ソフトバンクG",
+      "entry_price": 9253.9,
+      "exit_price": 9688.1,
+      "shares": 64,
+      "status": "TP達成 (利確)",
+      "pnl": 27788.8,
+      "return_pct": 4.69
+    },
+    {
+      "stage": "08:30 TOP5",
+      "ticker": "6998.JP",
+      "company_name": "日本タングステン",
+      "entry_price": 3227.9,
+      "exit_price": 3351.7,
+      "shares": 185,
+      "status": "TP達成 (利確)",
+      "pnl": 22903.0,
+      "return_pct": 3.84
+    },
+    {
+      "stage": "08:30 TOP5",
+      "ticker": "3907.JP",
+      "company_name": "シリコンスタジオ",
+      "entry_price": 1706.8,
+      "exit_price": 1785.3,
+      "shares": 351,
+      "status": "TP達成 (利確)",
+      "pnl": 27553.5,
+      "return_pct": 4.6
+    },
+    {
+      "stage": "08:30 TOP5",
+      "ticker": "4052.JP",
+      "company_name": "フィーチャ",
+      "entry_price": 543.2,
+      "exit_price": 562.4,
+      "shares": 1104,
+      "status": "TP達成 (利確)",
+      "pnl": 21196.8,
+      "return_pct": 3.53
+    },
+    {
+      "stage": "08:30 TOP5",
+      "ticker": "7709.JP",
+      "company_name": "クボテック",
+      "entry_price": 268.5,
+      "exit_price": 264.3,
+      "shares": 2234,
+      "status": "SL撤退 (損切)",
+      "pnl": -9382.8,
+      "return_pct": -1.56
+    },
+    {
+      "stage": "08:30 TOP5",
+      "ticker": "4234.JP",
+      "company_name": "サンエー化研",
+      "entry_price": 612.7,
+      "exit_price": 639.3,
+      "shares": 979,
+      "status": "TP達成 (利確)",
+      "pnl": 26041.4,
+      "return_pct": 4.34
+    }
+  ]
 }

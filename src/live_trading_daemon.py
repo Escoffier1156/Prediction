@@ -208,6 +208,7 @@ class LiveTradingStreamer:
         print(" 【15:00 本日の取引結果 確定明細】")
         print("=" * 80)
 
+        detailed_trades = []
         for pos in self.active_positions:
             is_win = (random.random() < 0.75)
             if is_win:
@@ -221,6 +222,13 @@ class LiveTradingStreamer:
             pnl = round((exit_price - pos["entry_price"]) * pos["shares"], 1)
             ret_pct = round(((exit_price - pos["entry_price"]) / pos["entry_price"]) * 100.0, 2)
             total_daily_pnl += pnl
+
+            trade_record = {
+                "stage": pos["stage"], "ticker": pos["code"], "company_name": pos["name"],
+                "entry_price": pos["entry_price"], "exit_price": exit_price, "shares": pos["shares"],
+                "status": status, "pnl": pnl, "return_pct": ret_pct
+            }
+            detailed_trades.append(trade_record)
 
             color = "\033[32m" if pnl >= 0 else "\033[31m"
             print(f" {pos['stage']:12s} | {pos['code']:8s} | {pos['name']:12s} | 約定:¥{pos['entry_price']:,.1f} ➔ 決済:¥{exit_price:,.1f} | {color}{status:12s} {pnl:+,.0f}円 ({ret_pct:+,.2f}%)\033[0m")
@@ -241,12 +249,17 @@ class LiveTradingStreamer:
             "final_capital": round(self.capital, 1),
             "daily_net_pnl": round(total_daily_pnl, 1),
             "win_rate_pct": round(win_rate, 1),
-            "total_trades": len(self.active_positions)
+            "total_trades": len(self.active_positions),
+            "trades": detailed_trades
         }
         with open("reports/today_live_trading_log.json", "w", encoding="utf-8") as f:
             json.dump(log_json, f, indent=2, ensure_ascii=False)
 
-        print("✔ リアルタイム取引ログ `reports/today_live_trading_log.json` 保存完了！")
+        # Write CSV
+        import pandas as pd
+        pd.DataFrame(detailed_trades).to_csv("reports/today_live_trading_trades.csv", index=False)
+
+        print("✔ リアルタイム取引ログ `reports/today_live_trading_log.json` & CSV 保存完了！")
 
 
 if __name__ == "__main__":
@@ -255,7 +268,7 @@ if __name__ == "__main__":
     parser.add_argument("--interval", type=float, default=0.8, help="Tick streaming interval in seconds")
     args = parser.parse_args()
 
-    streamer = LiveTradingStreamer(initial_capital=5_000_000.0)
+    streamer = LiveTradingStreamer(initial_capital=10_000_000.0)
     if args.mode == "live":
         streamer.run_wall_clock_daemon()
     else:
