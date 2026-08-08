@@ -1,0 +1,21 @@
+{
+  "analysis_title": "過去3ヶ月データ ＆ リアルタイム実取引 総合連動分析",
+  "period": "2026-05-18 至 2026-08-08 (60 営業日連動)",
+  "initial_capital": 10000000.0,
+  "final_portfolio_balance": 21011086.8,
+  "total_net_profit": 11011086.8,
+  "total_roi_pct": 110.11,
+  "avg_daily_profit": 183518.1,
+  "today_contribution": {
+    "today_date": "2026-08-08",
+    "today_pnl": 212608.5,
+    "today_win_rate": 90.0,
+    "status": "統計的上限バンド（上位10%の絶好調日）に完全合致"
+  },
+  "monthly_breakdown": {
+    "2026年5月": 1397690.7,
+    "2026年6月": 3399772.1,
+    "2026年7月": 4483654.1,
+    "2026年8月(進行中)": 1729969.9
+  }
+}
