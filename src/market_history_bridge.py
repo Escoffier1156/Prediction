@@ -28,6 +28,7 @@ class HistoricalLiveBridge:
         self.num_days = num_days
         self.solver = Z3JumpSolver()
 
+    # [LOCK: logic]
     def generate_interlocking_analysis(self) -> Dict[str, Any]:
         print("======================================================================")
         print(f" 🔗 BRIDGING PAST 3 MONTHS WITH TODAY'S REAL-TIME TRADING (Capital: ¥{self.initial_capital:,.0f})")
@@ -136,6 +137,7 @@ class HistoricalLiveBridge:
         print(f"📈 3-Month Cumulative Net Profit: ¥{total_net_profit:+,.0f} (+{total_roi_pct:.2f}%)")
         print(f"🎯 Today's Real-Time PnL Contribution: ¥{today_pnl:+,.0f} (Win Rate: {today_data['win_rate_pct']}%)")
         return interlock_summary
+    # [/LOCK]
 
     def render_interlock_png_report(self, summary: Dict[str, Any], daily_records: List[Dict[str, Any]]):
         from reportlab.lib import colors
